@@ -5,7 +5,7 @@
 	$servidor="localhost";
 	$usuario="root";
 	$clave="password";
-	$base="sistemaBiblioteca";
+	$base="sistemabiblioteca";
 
 	
     $tabla2="...";
@@ -53,7 +53,7 @@
    $varlibfecedi="libfecedi";
    $varlibnumpag="libnumpag";
    $varlibisbn="libisbn";
-   $varlibgenaut="autcod";
+   $varlibgenaut="autcod"; //libro genero-autor
    $varlibDew="dewcod";
    $varlibedit="editcod";
 
