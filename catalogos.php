@@ -1,17 +1,16 @@
 
 <body>
-  <?php  
+  <?php
 
     include("top.php");
     include("pages/catalogs/catbar.php");
-    
+
 
 
 
 
 
  $pageLocation=$_GET["pageLocation"];
-
 
  if ($pageLocation=="libros") {
     include("pages/catalogs/libros.php");
@@ -23,10 +22,8 @@
 
 
 
+
  include("down.php");
 
 
 ?>
-        
-
-

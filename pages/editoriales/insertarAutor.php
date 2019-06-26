@@ -5,16 +5,15 @@
 	session_start();
 
 
-	$delautcod=$_POST['delautcod'];
-	$delautnom=$_POST['delautnom'];
-	$delautape=$_POST['delautape'];
-
+	$formautnom=$_POST['formautnom'];
+	$formautape=$_POST['formautape'];
+	$formseud=$_POST['formautseud'];
 
 
 	$usuCodigo=$_SESSION['usuCodigo'];
     $bitPersonaName=$_SESSION['nombreComp'];
 
-$checkValidation="SELECT * FROM $tablaLibros WHERE $varlibgenaut='$delautcod';"; //varlibgenaut = autcod
+$checkValidation="SELECT * FROM $tablAutor WHERE $varautnom='$formautnom' AND $varautape='$formautape';";
 
 $resultado=mysqli_query($conexion, $checkValidation) or die(mysqli_error($conexion));
 
@@ -23,17 +22,23 @@ $dataRow = mysqli_fetch_array($resultado);
 
 	 
 	 if($dataRow>0) {
+		echo "0";
 
-
-	 	echo "0";
-
-	 	
 		} else {
 
+
 		$insRegistro=mysqli_query($conexion,"
-			DELETE FROM $tablAutor
-			WHERE $varautcod='$delautcod'		    
-		    ;")
+		    INSERT INTO  $tablAutor(		    
+			   $varautnom,
+			   $varautape,
+			   $varautseud,
+			   $varautdes
+		      ) VALUES(
+		      '$formautnom',
+		      '$formautape',
+		      '$formseud',
+		      '---'
+		      );")
 		    or die ('ERROR INS-INS:'.mysqli_error($conexion));
 
 	
@@ -48,7 +53,7 @@ $dataRow = mysqli_fetch_array($resultado);
 		      $varNomPersona
 		      ) VALUES(
 		      NOW(),
-		      'elimino el autor $delautnom $delautape',
+		      ' ingreso un nuevo autor: $formautnom $formautape',
 		      '$usuCodigo',
 		      '---',
 		      '$bitPersonaName');")
@@ -58,8 +63,5 @@ $dataRow = mysqli_fetch_array($resultado);
 
 
 	echo "1";
-
-	
 }
-
  ?>
