@@ -59,6 +59,7 @@
           
           <a class="dropdown-item" href="catalogos.php?pageLocation=libros">Libros</a>
           <a class="dropdown-item" href="catalogos.php?pageLocation=autores">Autores</a>
+          <a class="dropdown-item" href="catalogos.php?pageLocation=editoriales">Editoriales</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item disabled" href="#">Catalogos</a>
         </div>
