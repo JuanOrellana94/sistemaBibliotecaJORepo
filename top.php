@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">  
     <TITLE>SISTEMA DE BIBLIOTECA, VERSION PROTOTIPO 1.0, 2019</TITLE>
     <!-- Bootstrap -->
-    <script src="/src/js/jquery-3.4.0.min.js"></script>
+    <script src="src/js/jquery-3.4.0.min.js"></script>
     <script src="src/js/bootstrap.bundle.min.js"></script>
     <script src="src/js/jsSession.js"></script>
     <script src="src/js/jsRedirects.js"></script>
@@ -60,6 +60,7 @@
           <a class="dropdown-item" href="catalogos.php?pageLocation=libros">Libros</a>
           <a class="dropdown-item" href="catalogos.php?pageLocation=autores">Autores</a>
           <a class="dropdown-item" href="catalogos.php?pageLocation=editoriales">Editoriales</a>
+          <a class="dropdown-item" href="catalogos.php?pageLocation=estantes">Estantes</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item disabled" href="#">Catalogos</a>
         </div>
