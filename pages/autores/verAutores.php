@@ -94,6 +94,8 @@
            
             <div class="col-sm-6">
 
+
+
               <div class="form-group">
                 <label for="TituloLabel">Nombre</label>
                 <input type="text" class="form-control" name="formautnom" id="formautnom" aria-describedby="formautnom" placeholder="">
@@ -132,7 +134,7 @@
   </div>
 </div>
 
-<!--MODAL PARA MODIFICAR  AUTOR-->
+<!--MODAL PARA MODIFICAR EDITAR CAMBIAR  AUTOR-->
 <div class="modal fade" id="modalEditarAutor" tabindex="-1" role="dialog" aria-labelledby="modalEditarAutor" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -143,7 +145,7 @@
         </button>
       </div>
       <div class="modal-body" style="background: #D5D9DF;">
-        <form id="formEditAuthor" name="formEditAuthor">
+        <form id="formEditarAutor" name="formEditarAutor"> <!-- NO SE USA EN NINGUNA OTRA PAGINA-->
           <div class="row">
            
             <div class="col-sm-6">
@@ -195,13 +197,13 @@
   <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-header" style="background: #D5D9DF;">
-        <h5 class="modal-title" id="deleteAuthorTitle"><img src="img/icons/BookEditWideDel.png" width="35" height="30"> Eliminar</h5>
+        <h5 class="modal-title" id="borrarAutorTitle"><img src="img/icons/BookEditWideDel.png" width="35" height="30"> Eliminar</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body" style="background: #D5D9DF;">
-        <form id="deleteForm" name="deleteForm">
+        <form id="borrarFormulario" name="borrarFormulario">
           <div class="row">         
             <div class="col-sm-12">
               <div class="form-group">
@@ -220,7 +222,7 @@
       <div class="modal-footer" style="background: #D5D9DF;">
         <div id="respuestaBorrarAutor" style="color: red; font-weight: bold; text-align: center;"></div>         
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button"  id="borrarButton" name="borrarButton" class="btn btn-danger" onclick="deleteAuthor()">Eliminar</button>
+        <button type="button"  id="borrarButton" name="borrarButton" class="btn btn-danger" onclick="borrarAutor()">Eliminar</button>
       </div>
      
     </div>
@@ -296,7 +298,7 @@ function insertarAutor(){
   if ($("#formautnom").val()==""){
     $("#respuestaNuevoAutor").show();
     $("#respuestaNuevoAutor").html("Campo de Nombre del Autor esta Vacio");
-  }else if ($("#formautape").val()==""){
+  }  else if ($("#formautape").val()==""){
     $("#respuestaNuevoAutor").show();
     $("#respuestaNuevoAutor").html("Campo de Apellido del Autor esta Vacio");
   }else if ($("#formautseud").val()==""){
@@ -369,7 +371,7 @@ function editarAutor(){
             $.ajax({
               type: "POST",
               url: url,
-              data: $("#formEditAuthor").serialize(),
+              data: $("#formEditarAutor").serialize(),
               success: function (data){               
                 if (data==1) {
                   //success
@@ -420,8 +422,8 @@ function limpiarFormularioAutor(){
 
 }
 
-
-function deleteAuthor(){
+//BORRAR AUTOR
+function borrarAutor(){
   $("#borrarButton").attr("disabled", true);
 
   if ($("#delautcod").val()==""){
@@ -433,7 +435,7 @@ function deleteAuthor(){
     $.ajax({
       type: "POST",
       url: url,
-      data: $("#deleteForm").serialize(),
+      data: $("#borrarFormulario").serialize(),
       success: function (data){
         recargarTabla()
         if (data=="0"){
@@ -442,7 +444,7 @@ function deleteAuthor(){
            $.ajax({
               type: "POST",
               url: url,
-              data: $("#deleteForm").serialize(),
+              data: $("#borrarFormulario").serialize(),
               success: function (data){
                   $("#labelBorrar").show();
                   $("#notificationLabel").html("");
@@ -472,6 +474,8 @@ function deleteAuthor(){
   }
 }
 
+//TRIGGER SE ACTIVA AL MOSTRAR UN MODAL   EDITAR 
+
  $('#modalEditarAutor').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget) // Button that triggered the modal
       var varautcod = button.data('varautcod')
@@ -485,10 +489,9 @@ function deleteAuthor(){
       document.getElementById('editautnom').value = varautnom;
       document.getElementById('editautape').value = varautape;
       document.getElementById('editautseud').value = varautseud;
-      
-      
+ 
     })
-
+//TRIGGER SE ACTIVA AL MOSTRAR UN MODAL   ELIMINAR 
 //Eliminar autor
   
      $('#modalBorrarAutor').on('show.bs.modal', function (event) {

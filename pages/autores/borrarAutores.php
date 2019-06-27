@@ -14,7 +14,7 @@
 	$usuCodigo=$_SESSION['usuCodigo'];
     $bitPersonaName=$_SESSION['nombreComp'];
 
-$checkValidation="SELECT * FROM $tablaLibros WHERE $varlibgenaut='$delautcod';";
+$checkValidation="SELECT * FROM $tablaLibros WHERE $varlibgenaut='$delautcod';"; //varlibgenaut = autcod
 
 $resultado=mysqli_query($conexion, $checkValidation) or die(mysqli_error($conexion));
 

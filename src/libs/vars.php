@@ -5,7 +5,7 @@
 	$servidor="localhost";
 	$usuario="root";
 	$clave="password";
-	$base="sistemaBiblioteca";
+	$base="sistemabiblioteca";
 
 	
     $tabla2="...";
@@ -53,7 +53,7 @@
    $varlibfecedi="libfecedi";
    $varlibnumpag="libnumpag";
    $varlibisbn="libisbn";
-   $varlibgenaut="autcod";
+   $varlibgenaut="autcod"; //libro genero-autor
    $varlibDew="dewcod";
    $varlibedit="editcod";
 
@@ -90,36 +90,19 @@
     $vareditcod="editcod";   
     $vareditnom="editnom";
     $vareditpai="editpai";
-     
-      // TABLA ESTANTE
-    $tablaEstante="estante";
-  // 7 NOMBRE TABLA ESTANTE estcod,estdes
-
-    $varestcod="estcod";
-    $varestdes="estdes";
-
-     // TABLA EJEMPLARES
-     $tablaEjemplares="ejemplareslibros";
- // 8 NOMBRE TABLA EJEMPLARESLIBROS ejemcod, ejemcodreg, ejemfecadq, ejemtipadq, ejemdetaqu, ejempruni, ejemestu, ejemconfis, ejemdetcon, ejemres, estcod, libcod
-
-    $varejemcod="ejemcod";
-    $varejemcodreg="ejemcodreg";
-    $varejemfecadq="ejemfecadq";
-    $varejemdetaqu="ejemdetaqu";
-    $varejempruni="ejempruni";
-    $varejemestu="ejemestu";
-    $varejemconfis="ejemconfis";
-    $varejemdetcon="ejemdetcon";
-    $varejemres="ejemres";
-    $varejemestcod="estcod"; 
-    $varejemlibcod="libcod";   
 
 
-       //Variables de BITACORA
-	  $varFecha="bitfec";
-	  $varDesc="bitdes";
-	  $varBitUsuCodigo="bitusucod";
-	  $varNomLibreria="bitnomlib";
-	  $varNomPersona="bitnombre";
+  
+
+
+
+
+
+   //Variables de BITACORA
+	$varFecha="bitfec";
+	$varDesc="bitdes";
+	$varBitUsuCodigo="bitusucod";
+	$varNomLibreria="bitnomlib";
+	$varNomPersona="bitnombre";
 
 ?>
