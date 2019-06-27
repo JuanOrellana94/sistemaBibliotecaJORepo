@@ -4,17 +4,13 @@
 	date_default_timezone_set("America/El_Salvador");
 	session_start();
 
-
-	$delautcod=$_POST['delautcod'];
-	$delautnom=$_POST['delautnom'];
-	$delautape=$_POST['delautape'];
-
-
+	$estantecod=$_POST['editestantecod'];
+	$estantenom=$_POST['editestantenom'];	
 
 	$usuCodigo=$_SESSION['usuCodigo'];
     $bitPersonaName=$_SESSION['nombreComp'];
 
-$checkValidation="SELECT * FROM $tablaLibros WHERE $varlibgenaut='$delautcod';";
+$checkValidation="SELECT * FROM $tablaEstante WHERE $varestdes='$estantenom'  AND $varestcod!='$estantecod';";
 
 $resultado=mysqli_query($conexion, $checkValidation) or die(mysqli_error($conexion));
 
@@ -23,21 +19,20 @@ $dataRow = mysqli_fetch_array($resultado);
 
 	 
 	 if($dataRow>0) {
+		echo "0";
 
-
-	 	echo "0";
-
-	 	
 		} else {
 
+
 		$insRegistro=mysqli_query($conexion,"
-			DELETE FROM $tablAutor
-			WHERE $varautcod='$delautcod'		    
-		    ;")
-		    or die ('ERROR INS-INS:'.mysqli_error($conexion));
+			UPDATE $tablaEstante SET
+			$varestdes='$estantenom'			
+			WHERE $varestcod='$estantecod';
+		    ")
+	    or die ('ERROR INS-INS:'.mysqli_error($conexion));
 
 	
-
+// Memo: Campo Bitacora Descipcion  $varDesc debe ser extendida para evitar errores string too long
 
 		$insRegistro=mysqli_query($conexion,"
 		    INSERT INTO  $tablaBitacora(
@@ -48,18 +43,12 @@ $dataRow = mysqli_fetch_array($resultado);
 		      $varNomPersona
 		      ) VALUES(
 		      NOW(),
-		      'elimino el autor $delautnom $delautape',
+		      'ha editado el editorial: $estantenom  Codigo: $estantecod',
 		      '$usuCodigo',
 		      '---',
 		      '$bitPersonaName');")
 		    or die ('ERROR INS-INS:'.mysqli_error($conexion));
 
-
-
-
 	echo "1";
-
-	
 }
-
  ?>

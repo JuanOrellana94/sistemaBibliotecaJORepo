@@ -5,16 +5,15 @@
 	session_start();
 
 
-	$delautcod=$_POST['delautcod'];
-	$delautnom=$_POST['delautnom'];
-	$delautape=$_POST['delautape'];
-
+	$delestantecod=$_POST['delestantecod'];
+	$delestantenom=$_POST['delestantenom'];
+	
 
 
 	$usuCodigo=$_SESSION['usuCodigo'];
     $bitPersonaName=$_SESSION['nombreComp'];
 
-$checkValidation="SELECT * FROM $tablaLibros WHERE $varlibgenaut='$delautcod';";
+$checkValidation="SELECT * FROM $tablaEjemplares WHERE $varejemestcod='$delestantecod';";
 
 $resultado=mysqli_query($conexion, $checkValidation) or die(mysqli_error($conexion));
 
@@ -31,8 +30,8 @@ $dataRow = mysqli_fetch_array($resultado);
 		} else {
 
 		$insRegistro=mysqli_query($conexion,"
-			DELETE FROM $tablAutor
-			WHERE $varautcod='$delautcod'		    
+			DELETE FROM $tablaEstante
+			WHERE $varestcod='$delestantecod'		    
 		    ;")
 		    or die ('ERROR INS-INS:'.mysqli_error($conexion));
 
@@ -48,7 +47,7 @@ $dataRow = mysqli_fetch_array($resultado);
 		      $varNomPersona
 		      ) VALUES(
 		      NOW(),
-		      'elimino el autor $delautnom $delautape',
+		      'elimino el Estante $delestantenom',
 		      '$usuCodigo',
 		      '---',
 		      '$bitPersonaName');")
