@@ -158,59 +158,34 @@
     </div>
 </div>
 
-<!--INICIAN MODALS PARA INSERTAR, MODIFICAR, ELIMINAR AUTORES-->
 
 
-<!--MODAL PARA INSERTAR NUEVO AUTOR-->
+
+<!--MODAL PARA AGREGAR LIBROS A UN PEDIDO-->
 <div class="modal fade" id="prestamosModal" tabindex="-1" role="dialog" aria-labelledby="prestamosModal" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-header" style="background: #D5D9DF;">
+      <div class="modal-header" >
         <h5 class="modal-title" id="prestamosModal"><img src="img/icons/Bookauthor.png" width="30" height="30"> Prestar Libros</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" style="background: #D5D9DF;">
+      <div class="modal-body" >
         <form id="formNuevoAutor" name="formNuevoAutor">
-          <div class="row">
-           
-            <div class="col-sm-6">
+        
 
 
 
-              <div class="form-group">
-                <label for="TituloLabel">Nombre</label>
-                <input type="text" class="form-control" name="formautnom" id="formautnom" aria-describedby="formautnom" placeholder="">
-              </div>
-             
-            </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label for="TituloLabel">Apellido</label>
-                <input type="text" class="form-control" name="formautape" id="formautape" aria-describedby="formautape" placeholder="">
-              </div>
 
-            </div>
-           </div>
-           <div class="row">
-             <div class="col-sm-12">
-                <div class="form-group">
-                <label for="TituloLabel">Pseudonimo</label>
-                <input type="text" class="form-control" name="formautseud" id="formautseud" aria-describedby="formautseud" placeholder="">
-              </div>
-
-             </div>
-           </div>
             
         </form>
-
       </div>
-      <div class="modal-footer" style="background: #D5D9DF;">
+      <div class="modal-footer" >
          <div id="respuestaNuevoAutor" style="color: red; font-weight: bold; text-align: center;"></div>
 
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" onclick="insertarAutor()">Insertar</button>
+        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button> <--></-->
+        <!-- <button type="button" class="btn btn-primary" onclick="insertarAutor()">Enviar Prestamo</button> -->
       </div>
      
     </div>
