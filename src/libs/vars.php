@@ -4,7 +4,7 @@
 
 	$servidor="localhost";
 	$usuario="root";
-	$clave="jmedrano24";
+	$clave="password";
 	$base="sistemaBiblioteca";
 
 	
