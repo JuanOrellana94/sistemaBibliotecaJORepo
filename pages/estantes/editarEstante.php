@@ -1,26 +1,16 @@
 <?php 
-	include("../vars.php");
-	include("../sessionControl/conection.php");
+	include("../../src/libs/vars.php");
+	include("../../src/libs/sessionControl/conection.php");
 	date_default_timezone_set("America/El_Salvador");
 	session_start();
 
-	$libcod=$_POST['editlibcod'];
-	$libtit=$_POST['editlibtit'];
-	$libdes=$_POST['editlibdes'];
-	
-	$libfecedi=$_POST['editlibfecedi'];
-	$libnumpag=$_POST['editlibnumpag'];
-	$libisbn=$_POST['editlibisbn'];
-	$libgenaut=$_POST['editgenautcod'];
-	$libDew=$_POST['editdewcod'];
-	$libedit=$_POST['editeditcod'];
-	$libtags=$_POST['editlibtags'];
-	$current_date=date("d-m-Y h:i:s");
+	$estantecod=$_POST['editestantecod'];
+	$estantenom=$_POST['editestantenom'];	
 
 	$usuCodigo=$_SESSION['usuCodigo'];
     $bitPersonaName=$_SESSION['nombreComp'];
 
-$checkValidation="SELECT * FROM $tablaLibros WHERE $varlibisbn='$libisbn' AND  $varlibcod!='$libcod';";
+$checkValidation="SELECT * FROM $tablaEstante WHERE $varestdes='$estantenom'  AND $varestcod!='$estantecod';";
 
 $resultado=mysqli_query($conexion, $checkValidation) or die(mysqli_error($conexion));
 
@@ -35,17 +25,9 @@ $dataRow = mysqli_fetch_array($resultado);
 
 
 		$insRegistro=mysqli_query($conexion,"
-			UPDATE $tablaLibros SET
-			$varlibtit='$libtit',
-			$varlibdes='$libdes',
-			$varlibfecedi='$libfecedi',
-			$varlibnumpag='$libnumpag',
-			$varlibisbn='$libisbn',
-			$varlibgenaut='$libgenaut',
-			$varlibDew='$libDew',
-			$varlibedit='$libedit',
-			$varlibtags='$libtags'
-			WHERE $varlibcod='$libcod';
+			UPDATE $tablaEstante SET
+			$varestdes='$estantenom'			
+			WHERE $varestcod='$estantecod';
 		    ")
 	    or die ('ERROR INS-INS:'.mysqli_error($conexion));
 
@@ -61,7 +43,7 @@ $dataRow = mysqli_fetch_array($resultado);
 		      $varNomPersona
 		      ) VALUES(
 		      NOW(),
-		      'ha editado libro: $libtit Codigo: $libcod',
+		      'ha editado el editorial: $estantenom  Codigo: $estantecod',
 		      '$usuCodigo',
 		      '---',
 		      '$bitPersonaName');")

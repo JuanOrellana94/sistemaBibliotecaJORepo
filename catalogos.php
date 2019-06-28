@@ -12,12 +12,14 @@
 
  $pageLocation=$_GET["pageLocation"];
 
- if ($pageLocation=="libros") {
+if ($pageLocation=="libros") {
     include("pages/catalogs/libros.php");
  } else if ($pageLocation=="autores") {
  	include("pages/autores/verAutores.php");
- }else if ($pageLocation=="editoriales") {
+ }else if ($pageLocation=="editorales") {
  	include("pages/editoriales/verEditoriales.php");
+ }else if ($pageLocation=="estantes") {
+ 	include("pages/estantes/verEstantes.php");
  }
 
 

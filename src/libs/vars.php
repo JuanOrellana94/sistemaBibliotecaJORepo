@@ -4,11 +4,11 @@
 
 	$servidor="localhost";
 	$usuario="root";
-	$clave="password";
-	$base="sistemabiblioteca";
+	$clave="jmedrano24";
+	$base="sistemaBiblioteca";
 
 	
-    $tabla2="...";
+  $tabla2="...";
 	$carta="612x792";
 	$a4="595x842";
 	$oficio="612x1008";
@@ -56,6 +56,7 @@
    $varlibgenaut="autcod"; //libro genero-autor
    $varlibDew="dewcod";
    $varlibedit="editcod";
+   $varlibtags="libtags";
 
    // 2 Nombres tabla DEWEY: dewcod, dewcodcla, dewtipcla;
    $vardewcod="dewcod";
@@ -90,6 +91,32 @@
     $vareditcod="editcod";   
     $vareditnom="editnom";
     $vareditpai="editpai";
+
+     // TABLA ESTANTE
+    $tablaEstante="estante";
+  // 7 NOMBRE TABLA ESTANTE estcod,estdes
+
+    $varestcod="estcod";
+    $varestdes="estdes";
+
+     // TABLA EJEMPLARES
+     $tablaEjemplares="ejemplareslibros";
+
+     
+ // 8 NOMBRE TABLA EJEMPLARESLIBROS ejemcod, ejemcodreg, ejemfecadq, ejemtipadq, ejemdetaqu, ejempruni, ejemestu, ejemconfis, ejemdetcon, ejemres, estcod, libcod
+
+    $varejemcod="ejemcod";
+    $varejemcodreg="ejemcodreg";
+    $varejemfecadq="ejemfecadq";
+    $varejemdetaqu="ejemdetaqu";
+    $varejempruni="ejempruni";
+    $varejemestu="ejemestu";
+    $varejemconfis="ejemconfis";
+    $varejemdetcon="ejemdetcon";
+    $varejemres="ejemres";
+    $varejemestcod="estcod"; 
+    $varejemlibcod="libcod";   
+
 
 
   

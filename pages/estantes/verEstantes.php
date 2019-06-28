@@ -1,23 +1,27 @@
-<!--ASPECTO VISUAL DE LA PAGINA DE EDITORIALES-->
-    <!--CONTENEDOR PARA TABLA DE EDITORIALES/MODALES PARA AGREGAR Y ELIMINAR EDITORIALES--> 
+<!--ASPECTO VISUAL DE LA PAGINA DE Estantes-->
+    <!--CONTENEDOR PARA TABLA DE Estantes/MODALES PARA AGREGAR Y ELIMINAR Estantes--> 
+
+    <?php
+     
+     ?>
 <!--DIRECCION DE LA UBICACION ACTUAL-->     
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="escritorio.php">Escritorio</a></li>
       <li class="breadcrumb-item">Catalogos</li>   
       <!--CAMBIAR SIGUIENTE POR NOMBRE DE CADA CATEGORIA-->     
-      <li class="breadcrumb-item" active  >Editoriales</li>
+      <li class="breadcrumb-item" active  >Estantes</li>
     </ol>
   </nav>        
 
-<!--INICIO CONTENEDOR DE CATALOGO DE EDITORIALES-->    
+<!--INICIO CONTENEDOR DE CATALOGO DE Estantes-->    
 <div class="container-fluid" > 
     <div class="col-sm-12">  
       <div class="card">   
         <div class="card-header">
           <div class="row mx-auto">
             <div style="vertical-align: middle; margin: 5px">
-               <p class="font-weight-light"> <h3>  Catalogo de Editoriales</h3>  Administrar informacion de Editoriales.</p>       
+               <p class="font-weight-light"> <h3>  Catalogo de Estantes</h3>  Administrar informacion de Estantes.</p>       
             </div>           
           </div>     
         </div>
@@ -48,11 +52,11 @@
                     <div class="col-sm-2">
                       <div class="btn-group float-right" role="group" aria-label="Opciones"> 
                         <button class="btn btn-light float-right" type="button" onclick="recargarTablaLimpiar();" data-toggle="tooltip" data-placement="top" title="Recargar Tabla">
-                          <img src="img/icons/BookediorialReload.png" width="45" height="45">
+                          <img src="img/icons/BookstandReload.png" width="45" height="45">
                         </button>
 
-                        <button type="button" class="btn btn-light float-right"  data-toggle="modal" data-target="#newEditorialModal"  >
-                          <img data-toggle="tooltip" data-placement="top"  title="Nuevo Editorial" src="img/icons/Bookaeditorial+.png" width="45" height="45">
+                        <button type="button" class="btn btn-light float-right"  data-toggle="modal" data-target="#newEstanteModal"  >
+                          <img data-toggle="tooltip" data-placement="top"  title="Nuevo Estante" src="img/icons/Bookstand+.png" width="45" height="45">
                         </button>
                         
                       </div>
@@ -71,28 +75,28 @@
     </div>
 </div>
 
-<!--INICIAN MODALS PARA INSERTAR, MODIFICAR, ELIMINAR Editoriales-->
+<!--INICIAN MODALS PARA INSERTAR, MODIFICAR, ELIMINAR Estantes-->
 
 
-<!--MODAL PARA INSERTAR NUEVO EDITORIAL-->
-<div class="modal fade" id="newEditorialModal" tabindex="-1" role="dialog" aria-labelledby="newEditorialModal" aria-hidden="true">
+<!--MODAL PARA INSERTAR NUEVO Estante-->
+<div class="modal fade" id="newEstanteModal" tabindex="-1" role="dialog" aria-labelledby="newEstanteModal" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header" style="background: #D5D9DF;">
-        <h5 class="modal-title" id="newEditorialModal"><img src="img/icons/Bookaeditorial.png" width="30" height="30"> Nuevo Editorial</h5>
+        <h5 class="modal-title" id="newEstanteModal"><img src="img/icons/Bookstand+.png" width="30" height="30"> Nuevo Estante</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body" style="background: #D5D9DF;">
-        <form id="formNuevoEditorial" name="formNuevoEditorial">
+        <form id="formNuevoEstante" name="formNuevoEstante">
           <div class="row">
            
             <div class="col-sm-10">
 
               <div class="form-group">
-                <label for="TituloLabel">Nombre del editorial</label>
-                <input type="text" class="form-control" name="formeditorialnom" id="formeditorialnom" aria-describedby="formeditorialnom" placeholder="">
+                <label for="TituloLabel">Nombre del Estante</label>
+                <input type="text" class="form-control" name="formEstantenom" id="formEstantenom" aria-describedby="formEstantenom" placeholder="">
               </div>
              
             </div>          
@@ -102,37 +106,37 @@
 
       </div>
       <div class="modal-footer" style="background: #D5D9DF;">
-         <div id="respuestaNuevoEditorial" style="color: red; font-weight: bold; text-align: center;"></div>
+         <div id="respuestaNuevoEstante" style="color: red; font-weight: bold; text-align: center;"></div>
 
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" onclick="insertarEditorial()">Insertar</button>
+        <button type="button" class="btn btn-primary" onclick="insertarEstante()">Insertar</button>
       </div>
      
     </div>
   </div>
 </div>
 
-<!--MODAL PARA MODIFICAR  EDITORIAL-->
+<!--MODAL PARA MODIFICAR  Estante-->
 
-<div class="modal fade" id="modalEditarEditorial" tabindex="-1" role="dialog" aria-labelledby="modalEditarEditorial" aria-hidden="true">
+<div class="modal fade" id="modalEditarEstante" tabindex="-1" role="dialog" aria-labelledby="modalEditarEstante" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header" style="background: #D5D9DF;">
-        <h5 class="modal-title" id="newEditorialModal"><img src="img/icons/Bookaeditorial.png" width="30" height="30">Editar Editorial</h5>
+        <h5 class="modal-title" id="newEstanteModal"><img src="img/icons/Bookstand.png" width="30" height="30">Editar Estante</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body" style="background: #D5D9DF;">
-        <form id="formEditEditorial" name="formEditEditorial">
+        <form id="formEditEstante" name="formEditEstante">
           <div class="row">
            
             <div class="col-sm-10">
 
               <div class="form-group">
                 <label for="TituloLabel">Nombre</label>
-                 <input type="text" class="form-control" name="editeditorialcod" id="editeditorialcod" aria-describedby="editeditorialcod" placeholder="" hidden>
-                <input type="text" class="form-control" name="editeditorialnom" id="editeditorialnom" aria-describedby="editeditorialnom" placeholder="">
+                 <input type="text" class="form-control" name="editestantecod" id="editestantecod" aria-describedby="editestantecod" placeholder="" hidden>
+                <input type="text" class="form-control" name="editestantenom" id="editestantenom" aria-describedby="editestantenom" placeholder="">
               </div>
              
             </div>
@@ -143,10 +147,10 @@
 
       </div>
       <div class="modal-footer" style="background: #D5D9DF;">
-         <div id="respuestaEditarEditorial" style="color: red; font-weight: bold; text-align: center;"></div>
+         <div id="respuestaEditarEstante" style="color: red; font-weight: bold; text-align: center;"></div>
 
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" onclick="editarEditorial()">Editar</button>
+        <button type="button" class="btn btn-primary" onclick="editarEstante()">Editar</button>
       </div>
      
     </div>
@@ -156,13 +160,13 @@
 
 
 
-<!--MODAL PARA ELIMINAR EDITORIAL-->
+<!--MODAL PARA ELIMINAR Estante-->
 
-<div class="modal fade" id="modalBorrarEditorial" tabindex="-1" role="dialog" aria-labelledby="modalBorrarEditorial" aria-hidden="true">
+<div class="modal fade" id="modalBorrarEstante" tabindex="-1" role="dialog" aria-labelledby="modalBorrarEstante" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-header" style="background: #D5D9DF;">
-        <h5 class="modal-title" id="deleteEditorialTitle"><img src="img/icons/BookEditWideDel.png" width="35" height="30"> Eliminar</h5>
+        <h5 class="modal-title" id="deleteEstanteTitle"><img src="img/icons/BookEditWideDel.png" width="35" height="30"> Eliminar</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -172,9 +176,9 @@
           <div class="row">         
             <div class="col-sm-12">
               <div class="form-group">
-                <div id=notificationLabel style="color: black; font-weight: bold; text-align: center;"><label for="TituloLabel">Eliminar Editorial es una accion <b> Permanente </b> desea eliminar Editorial:</label></div>                
-                <input type="text" class="form-control" name="deleditorialcod" id="deleditorialcod" aria-describedby="deleditorialcod" placeholder="Editorial" hidden="true">
-                <input type="text" class="form-control" name="deleditorialnom" id="deleditorialnom" aria-describedby="deleditorialnom" placeholder="Editorial" hidden="true">
+                <div id=notificationLabel style="color: black; font-weight: bold; text-align: center;"><label for="TituloLabel">Eliminar Estante es una accion <b> Permanente </b> desea eliminar Estante:</label></div>                
+                <input type="text" class="form-control" name="delestantecod" id="delestantecod" aria-describedby="delestantecod" placeholder="Estante" hidden="true">
+                <input type="text" class="form-control" name="delestantenom" id="delestantenom" aria-describedby="delestantenom" placeholder="Estante" hidden="true">
                            
                   <div id="labelBorrar" style="color: black; font-weight: bold; text-align: center;"></div>
                   <div align="center" name="cargarTablaRequisito" id="cargarTablaRequisito"></div>
@@ -185,9 +189,9 @@
         </form>
       </div>
       <div class="modal-footer" style="background: #D5D9DF;">
-        <div id="respuestaBorrarEditorial" style="color: red; font-weight: bold; text-align: center;"></div>         
+        <div id="respuestaBorrarEstante" style="color: red; font-weight: bold; text-align: center;"></div>         
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button"  id="borrarButton" name="borrarButton" class="btn btn-danger" onclick="deleteEditorial()">Eliminar</button>
+        <button type="button"  id="borrarButton" name="borrarButton" class="btn btn-danger" onclick="deleteEstante()">Eliminar</button>
       </div>
      
     </div>
@@ -224,7 +228,7 @@ function recargarTabla(){
   $("#cargandoFeedback").html(' <img src="img/structures/replace.gif" style="max-width: 60%; margin-top:-10%; margin-left:-30%">').show(200);
 
   var busqueda=$("#textBusqueda").val();  
-  $("#cargarTabla").load("pages/Editoriales/tablaEditoriales.php?pagina=1&busqueda="+ busqueda);
+  $("#cargarTabla").load("pages/Estantes/tablaEstantes.php?pagina=1&busqueda="+ busqueda);
 
   setTimeout( function() {
       $("#cargandoFeedback").hide(500);
@@ -241,7 +245,7 @@ function recargarTablaLimpiar(){
     var busqueda=$("#textBusqueda").val();
 
   
-    $("#cargarTabla").load("pages/Editoriales/tablaEditoriales.php?pagina=1&busqueda="+busqueda);
+    $("#cargarTabla").load("pages/Estantes/tablaEstantes.php?pagina=1&busqueda="+busqueda);
 
     setTimeout( function() {
       $("#cargandoFeedback").hide(500);
@@ -258,53 +262,53 @@ function recargarTablaLimpiar(){
 
 
 
-//INSERTAR NUEVO Editorial
-function insertarEditorial(){
+//INSERTAR NUEVO Estante
+function insertarEstante(){
 
-  if ($("#formeditorialnom").val()==""){
-    $("#respuestaNuevoEditorial").show();
-    $("#respuestaNuevoEditorial").html("Campo de Nombre del Editorial esta Vacio");  
+  if ($("#formEstantenom").val()==""){
+    $("#respuestaNuevoEstante").show();
+    $("#respuestaNuevoEstante").html("Campo de Nombre del Estante esta Vacio");  
   }else {
-    $("#respuestaNuevoEditorial").html('<img src="img/structures/replace.gif" style="max-width: 50%">').show(500);
-    var url = "pages/Editoriales/insertarEditorial.php";
+    $("#respuestaNuevoEstante").html('<img src="img/structures/replace.gif" style="max-width: 50%">').show(500);
+    var url = "pages/Estantes/insertarEstante.php";
             $.ajax({
               type: "POST",
               url: url,
-              data: $("#formNuevoEditorial").serialize(),
+              data: $("#formNuevoEstante").serialize(),
               success: function (data){
                 if (data==1) {
                     //success
                     $("#accionFeedback").show();
-                    $("#accionFeedback").html("<div class='alert alert-success' role='alert'>Nuevo Editorial agregado </div>");
+                    $("#accionFeedback").html("<div class='alert alert-success' role='alert'>Nuevo Estante agregado </div>");
                      recargarTabla();
-                     limpiarFormularioEditorial();
+                     limpiarFormularioEstante();
                     setTimeout(
                         function() {
                           
                           $("#accionFeedback").hide(500);          
                     }, 6000);
-                    $("#respuestaNuevoEditorial").hide(500);
-                    $('#newEditorialModal').modal('hide');
+                    $("#respuestaNuevoEstante").hide(500);
+                    $('#newEstanteModal').modal('hide');
 
                 } else if (data==0) {
                   //error
-                  $("#respuestaNuevoEditorial").show();
-                  $("#respuestaNuevoEditorial").html("<div class='alert alert-warning' role='alert'>Esta Editorial ya ha sido agregado </div>");
+                  $("#respuestaNuevoEstante").show();
+                  $("#respuestaNuevoEstante").html("<div class='alert alert-warning' role='alert'>Esta Estante ya ha sido agregado </div>");
                      recargarTabla();
                     setTimeout(
                         function() {
-                          $("#respuestaNuevoEditorial").hide(500);                                
+                          $("#respuestaNuevoEstante").hide(500);                                
                     }, 6000);
                     
 
                 } else{
-                  $("#respuestaNuevoEditorial").show();
-                  $("#respuestaNuevoEditorial").html(data);
+                  $("#respuestaNuevoEstante").show();
+                  $("#respuestaNuevoEstante").html(data);
                      recargarTabla();
 
                     setTimeout(
                         function() {
-                          $("#respuestaNuevoEditorial").hide(500);                                
+                          $("#respuestaNuevoEstante").hide(500);                                
                     }, 6000);
                 }
 
@@ -313,55 +317,52 @@ function insertarEditorial(){
 
   }
 }
-//EDITAR Editorial
-function editarEditorial(){
+//EDITAR Estante
+function editarEstante(){
 
-  if ($("#editeditorialnom").val()==""){
-    $("#respuestaEditarEditorial").show();
-    $("#respuestaEditarEditorial").html("Campo de Nombre del Editorial esta Vacio");
-  }else if ($("#editeditorialpais").val()==""){
-    $("#respuestaEditarEditorial").show();
-    $("#respuestaEditarEditorial").html("Campo de Pais del Editoriale esta Vacio");
+  if ($("#editestantenom").val()==""){
+    $("#respuestaEditarEstante").show();
+    $("#respuestaEditarEstante").html("Campo de Indicador del Estante esta Vacio");
   }
   else {
-    $("#respuestaEditarEditorial").html('<img src="img/structures/replace.gif" style="max-width: 50%">').show(500);
-    var url = "pages/editoriales/editarEditorial.php";
+    $("#respuestaEditarEstante").html('<img src="img/structures/replace.gif" style="max-width: 50%">').show(500);
+    var url = "pages/Estantes/editarEstante.php";
             $.ajax({
               type: "POST",
               url: url,
-              data: $("#formEditEditorial").serialize(),
+              data: $("#formEditEstante").serialize(),
               success: function (data){               
                 if (data==1) {
                   //success
                   $("#accionFeedback").show();
-                  $("#accionFeedback").html("<div class='alert alert-success' role='alert'>Editorial ha sido editado </div>");
+                  $("#accionFeedback").html("<div class='alert alert-success' role='alert'>Estante ha sido editado </div>");
                   recargarTabla();
                   setTimeout(
                       function() {
                         $("#accionFeedback").hide(500);
                         
                   }, 6000);
-                  $("#respuestaEditarEditorial").hide(500);    
-                  $("#modalEditarEditorial").modal('hide');
+                  $("#respuestaEditarEstante").hide(500);    
+                  $("#modalEditarEstante").modal('hide');
 
                 } else if (data==0) {
                   //error
-                  $("#respuestaEditarEditorial").show();
-                  $("#respuestaEditarEditorial").html("<div class='alert alert-warning' role='alert'>Otro Editorial ya esta registrado con estos datos </div>");    
+                  $("#respuestaEditarEstante").show();
+                  $("#respuestaEditarEstante").html("<div class='alert alert-warning' role='alert'>Otro Estante ya esta registrado con estos datos </div>");    
                   setTimeout(
                       function() {
-                        $("#respuestaEditarEditorial").hide(500);
+                        $("#respuestaEditarEstante").hide(500);
                         
                        
                   }, 6000);
                   
                 } else {
                   //any other error
-                  $("#respuestaEditarEditorial").show();
-                  $("#respuestaEditarEditorial").html(data);                  
+                  $("#respuestaEditarEstante").show();
+                  $("#respuestaEditarEstante").html(data);                  
                   setTimeout(
                       function() {
-                        $("#respuestaEditarEditorial").hide(500);
+                        $("#respuestaEditarEstante").hide(500);
                         
                        
                   }, 6000);
@@ -374,22 +375,22 @@ function editarEditorial(){
 
   }
 }
-//BORRAR FORMULARIO DE NUEVO EDITORIAL
-function limpiarFormularioEditorial(){
-   document.getElementById("formNuevoEditorial").reset();
+//BORRAR FORMULARIO DE NUEVO Estante
+function limpiarFormularioEstante(){
+   document.getElementById("formNuevoEstante").reset();
 
 }
 
-//BORRAR EDITORIAL
-function deleteEditorial(){
+//BORRAR Estante
+function deleteEstante(){
   $("#borrarButton").attr("disabled", true);
 
-  if ($("#deleditorialcod").val()==""){
-    $("#respuestaBorrarEditorial").show();
-    $("#respuestaBorrarEditorial").html("Codigo de Editorial necesario");
+  if ($("#varestantecod").val()==""){
+    $("#respuestaBorrarEstante").show();
+    $("#respuestaBorrarEstante").html("Codigo de Estante necesario");
   }else {
     $("#labelBorrar").html('<img src="img/structures/replace.gif" style="max-width: 80%">').show(500);
-    var url = "pages/editoriales/borrarEditorial.php";
+    var url = "pages/estantes/borrarEstante.php";
     $.ajax({
       type: "POST",
       url: url,
@@ -397,8 +398,8 @@ function deleteEditorial(){
       success: function (data){
         recargarTabla()
         if (data=="0"){
-          // ERROR, Editorial TIENE LIBROS INSCRITOS
-          var url = "pages/editoriales/requisitosBorrarEdit.php";
+          // ERROR, Estante TIENE LIBROS INSCRITOS
+          var url = "pages/estantes/requisitosBorrarEstante.php";
            $.ajax({
               type: "POST",
               url: url,
@@ -406,7 +407,7 @@ function deleteEditorial(){
               success: function (data){
                   $("#labelBorrar").show();
                   $("#notificationLabel").html("");
-                  $("#labelBorrar").html("No se puede borrar a este Editorial. pues esta siendo usado por los libros:");
+                  $("#labelBorrar").html("No se puede borrar el Estante. contiene ejemplares ubicados en el:");
                   $("#cargarTablaRequisito").show();
                   $("#cargarTablaRequisito").html(data);                           
               }
@@ -415,12 +416,12 @@ function deleteEditorial(){
 
           $("#labelBorrar").show();
           $("#notificationLabel").html("<label for='TituloLabel'>Operacion finalizada</label>");
-          $("#labelBorrar").html("<h5>Editorial ha sido eliminado</h5>");
+          $("#labelBorrar").html("<h5>Estante ha sido eliminado</h5>");
 
-          $("#modalBorrarEditorial").modal('hide');
+          $("#modalBorrarEstante").modal('hide');
            //success
           $("#accionFeedback").show();
-          $("#accionFeedback").html("<div class='alert alert-success' role='alert'>Editorial Eliminado </div>");
+          $("#accionFeedback").html("<div class='alert alert-success' role='alert'>Estante Eliminado </div>");
            setTimeout(
               function() {
                  $("#accionFeedback").hide(500);                         
@@ -432,26 +433,26 @@ function deleteEditorial(){
   }
 }
 
- $('#modalEditarEditorial').on('show.bs.modal', function (event) {var button = $(event.relatedTarget) // Button that triggered the modal
-      var vareditorialcod = button.data('vareditorialcod')
-      var vareditorialnom = button.data('vareditorialnom')
+ $('#modalEditarEstante').on('show.bs.modal', function (event) {var button = $(event.relatedTarget) // Button that triggered the modal
+      var varestantecod = button.data('varestantecod')
+      var varestantenom = button.data('varestantenom')
         
       var modal = $(this)
-      modal.find('.modal-title').text('Editar Editorial: ' + vareditorialnom );
+      modal.find('.modal-title').text('Editar Estante: ' + varestantenom );
      
-      document.getElementById('editeditorialcod').value = vareditorialcod;
-      document.getElementById('editeditorialnom').value = vareditorialnom;
+      document.getElementById('editestantecod').value = varestantecod;
+      document.getElementById('editestantenom').value = varestantenom;
       
       
       
     })
 
-//Eliminar Editorial
+//Eliminar Estante
   
-     $('#modalBorrarEditorial').on('show.bs.modal', function (event) {
+     $('#modalBorrarEstante').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget) // 
-      var vareditorialcod = button.data('vareditorialcod')
-      var vareditorialnom = button.data('vareditorialnom')     
+      var varestantecod = button.data('varestantecod')
+      var varestantenom = button.data('varestantenom')     
 
       $('#borrarButton').attr("disabled", false);  
 
@@ -462,9 +463,9 @@ function deleteEditorial(){
        $("#cargarTablaRequisito").html('');
 
 
-      $("#labelBorrar").html('<h5> '+vareditorialnom+' '+'<h5> ');
-      document.getElementById('deleditorialcod').value = vareditorialcod;
-      document.getElementById('deleditorialnom').value = vareditorialnom;
+      $("#labelBorrar").html('<h5> '+varestantenom+' '+'<h5> ');
+      document.getElementById('delestantecod').value = varestantecod;
+      document.getElementById('delestantenom').value = varestantenom;
       
       
       
