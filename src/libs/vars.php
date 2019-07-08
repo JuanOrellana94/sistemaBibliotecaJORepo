@@ -112,7 +112,8 @@
     $varejemdetcon="ejemdetcon";
     $varejemres="ejemres";
     $varejemestcod="estcod"; 
-    $varejemlibcod="libcod";   
+    $varejemlibcod="libcod";
+    $varejemtipadq="ejemtipadq";   
 
 
        //Variables de BITACORA

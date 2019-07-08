@@ -21,6 +21,10 @@
  	include("pages/editoriales/verEditoriales.php");
  }else if ($pageLocation=="estantes") {
  	include("pages/estantes/verEstantes.php");
+ }else if ($pageLocation=="ejemplares") {
+ 	include("pages/ejemplares/verEjemplares.php");
+ }else if ($pageLocation=="usuarios") {
+ 	include("pages/usuarios/verUsuarios.php");
  }
 
 
