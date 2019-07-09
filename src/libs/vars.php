@@ -1,7 +1,6 @@
 <?php
 	
 
-
 	$servidor="localhost";
 	$usuario="root";
 	$clave="password";
@@ -44,7 +43,7 @@
   //1Nombre de tabla LIBROS
 
     $tablaLibros="libros";
-     //tabl aname
+     //tablaname
    $varlibcod="libcod";
    $varlibtit="libtit";
    $varlibdes="libdes";
@@ -53,7 +52,7 @@
    $varlibfecedi="libfecedi";
    $varlibnumpag="libnumpag";
    $varlibisbn="libisbn";
-   $varlibgenaut="autcod"; //libro genero-autor
+   $varlibgenaut="autcod";
    $varlibDew="dewcod";
    $varlibedit="editcod";
    $varlibtags="libtags";
@@ -92,7 +91,6 @@
     $vareditnom="editnom";
     $vareditpai="editpai";
 
-     // TABLA ESTANTE
     $tablaEstante="estante";
   // 7 NOMBRE TABLA ESTANTE estcod,estdes
 
@@ -102,7 +100,6 @@
      // TABLA EJEMPLARES
      $tablaEjemplares="ejemplareslibros";
 
-     
  // 8 NOMBRE TABLA EJEMPLARESLIBROS ejemcod, ejemcodreg, ejemfecadq, ejemtipadq, ejemdetaqu, ejempruni, ejemestu, ejemconfis, ejemdetcon, ejemres, estcod, libcod
 
     $varejemcod="ejemcod";
@@ -115,15 +112,19 @@
     $varejemdetcon="ejemdetcon";
     $varejemres="ejemres";
     $varejemestcod="estcod"; 
-    $varejemlibcod="libcod";   
+
+    $varejemlibcod="libcod";
+    $varejemtipadq="ejemtipadq";   
 
 
+       //Variables de BITACORA
+	  $varFecha="bitfec";
+	  $varDesc="bitdes";
+	  $varBitUsuCodigo="bitusucod";
+	  $varNomLibreria="bitnomlib";
+	  $varNomPersona="bitnombre";
 
-  
-
-
-
-
+    $varejemlibcod="libcod";  
 
    //Variables de BITACORA
 	$varFecha="bitfec";
@@ -131,5 +132,6 @@
 	$varBitUsuCodigo="bitusucod";
 	$varNomLibreria="bitnomlib";
 	$varNomPersona="bitnombre";
+
 
 ?>
