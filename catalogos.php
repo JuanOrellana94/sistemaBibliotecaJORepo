@@ -25,6 +25,8 @@
  	include("pages/ejemplares/verEjemplares.php");
  }else if ($pageLocation=="usuarios") {
  	include("pages/usuarios/verUsuarios.php");
+ }else if ($pageLocation=="categorias") {
+ 	include("pages/categorias/verCategorias.php");
  }
 
 

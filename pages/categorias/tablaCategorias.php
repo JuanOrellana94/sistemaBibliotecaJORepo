@@ -2,11 +2,11 @@
 	include("../../src/libs/vars.php");
 	include("../../src/libs/sessionControl/conection.php");
 
-	$limite = 20;
+	$limite = 5;
 	if (isset($_GET["pagina"])) { 
 		$pagina  = $_GET["pagina"]; 
 	} else {
-		$pagina=20; 
+		$pagina=5; 
 	};
 
 
@@ -16,13 +16,13 @@
 		$textBusqueda=""; 
 	};
 
-	$sql = "SELECT COUNT($varestcod) 
-      FROM $tablaEstante
+	$sql = "SELECT COUNT($vardewcod) 
+      FROM $tablaDewey
 		
       WHERE 
-		$varestcod LIKE '%$textBusqueda%' OR
-		$varestdes LIKE '%$textBusqueda%'		
-	ORDER BY $varestcod ";  
+		$vardewcodcla LIKE '%$textBusqueda%' OR
+		$vardewtipcla LIKE '%$textBusqueda%'
+	ORDER BY $vardewcod ";  
       $filas_resultado = mysqli_query($conexion, $sql);  
       $filas = mysqli_fetch_row($filas_resultado);  
       $todal_filas = $filas[0];  
@@ -48,7 +48,7 @@
       $("#pagination li").removeClass('active');
       $(this).addClass('active');
           var paginaNumero = this.id;
-        $("#cargarTabla").load("pages/editoriales/tablaEstantes.php?pagina="+ paginaNumero +"&busqueda=" + $("#textBusqueda").val());
+        $("#cargarTabla").load("pages/categorias/tablaCategorias.php?pagina="+ paginaNumero +"&busqueda=" + $("#textBusqueda").val());
       });
 </script>
 
@@ -62,7 +62,8 @@
 					<thead>
 						<tr>
 							<th>Codigo</th>
-							<th>Indicador</th>
+							<th>Codigo Dewey</th>
+							<th>Nombre de la Categoria</th>
 							
 	
 							
@@ -74,11 +75,11 @@
 
 
 						<?php 
-							$selTable=mysqli_query($conexion,"SELECT * FROM $tablaEstante 
+							$selTable=mysqli_query($conexion,"SELECT * FROM $tablaDewey 
 								WHERE 
-								$varestcod LIKE '%$textBusqueda%' OR
-								$varestdes LIKE '%$textBusqueda%' 								
-								ORDER BY $varestcod
+							$vardewcodcla LIKE '%$textBusqueda%' OR
+		                    $vardewtipcla LIKE '%$textBusqueda%'
+								ORDER BY $vardewcod
 								LIMIT $inicia_desde, $limite;");
 					if (mysqli_num_rows($selTable)==0){
 						 echo "<div id='respuesta' style='color: red; font-weight: bold; text-align: center;'>	
@@ -88,22 +89,25 @@
 							while ($dataLibros=mysqli_fetch_assoc($selTable)){
 						?>
 						<tr>
-							<td><?php echo $dataLibros[$varestcod];?> </td>						
-							<td><?php echo $dataLibros[$varestdes];?>  </td>							 
+							<td><?php echo $dataLibros[$vardewcod];?> </td>
+							<td><?php echo $dataLibros[$vardewcodcla];?> </td>						
+							<td><?php echo $dataLibros[$vardewtipcla];?>  </td>							 
 							
 							<td> 
 								<div class="btn-group" role="group" aria-label="Opciones">
-								<button type="button" class="btn btn-light" data-toggle="modal" data-target="#modalEditarEstante"
-								 data-varestantecod="<?php echo $dataLibros[$varestcod];?>"
-								 data-varestantenom="<?php echo  $dataLibros[$varestdes];?>"								 					 
-								 title="Editar Estante">
+								<button type="button" class="btn btn-light" data-toggle="modal" data-target="#modalEditarcategoria"
+								 data-vardewcod="<?php echo $dataLibros[$vardewcod];?>"
+								 data-vardewcodcla="<?php echo  $dataLibros[$vardewcodcla];?>"	
+								 data-vardewtipcla="<?php echo $dataLibros[$vardewtipcla];?>"							 					 
+								 title="Editar categoria">
 									<img  src="img/icons/BookEditWide.png" width="35" height="30">
 								</button>
 
-								<button type="button" class="btn btn-light" data-toggle="modal" data-target="#modalBorrarEstante"
-								 	data-varestantecod="<?php echo $dataLibros[$varestcod];?>"
-									data-varestantenom="<?php echo  $dataLibros[$varestdes];?>"
-									title="Eliminar Estante">
+								<button type="button" class="btn btn-light" data-toggle="modal" data-target="#modalBorrarcategoria"
+								 	data-vardewcod="<?php echo $dataLibros[$vardewcod];?>"
+									data-vardewcodcla="<?php echo  $dataLibros[$vardewcodcla];?>"
+									 data-vardewtipcla="<?php echo $dataLibros[$vardewtipcla];?>"
+									title="Eliminar categoria">
 								 	<img  src="img/icons/BookEditWideDel.png" width="35" height="30">
 								 </button>
 								</div>
