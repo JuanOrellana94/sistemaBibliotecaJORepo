@@ -1,14 +1,13 @@
 <?php
 	
 
-
 	$servidor="localhost";
 	$usuario="root";
 	$clave="password";
 	$base="sistemaBiblioteca";
 
 	
-    $tabla2="...";
+  $tabla2="...";
 	$carta="612x792";
 	$a4="595x842";
 	$oficio="612x1008";
@@ -44,7 +43,7 @@
   //1Nombre de tabla LIBROS
 
     $tablaLibros="libros";
-     //tabl aname
+     //tablaname
    $varlibcod="libcod";
    $varlibtit="libtit";
    $varlibdes="libdes";
@@ -56,6 +55,7 @@
    $varlibgenaut="autcod";
    $varlibDew="dewcod";
    $varlibedit="editcod";
+   $varlibtags="libtags";
 
    // 2 Nombres tabla DEWEY: dewcod, dewcodcla, dewtipcla;
    $vardewcod="dewcod";
@@ -90,8 +90,7 @@
     $vareditcod="editcod";   
     $vareditnom="editnom";
     $vareditpai="editpai";
-     
-      // TABLA ESTANTE
+
     $tablaEstante="estante";
   // 7 NOMBRE TABLA ESTANTE estcod,estdes
 
@@ -100,6 +99,7 @@
 
      // TABLA EJEMPLARES
      $tablaEjemplares="ejemplareslibros";
+
  // 8 NOMBRE TABLA EJEMPLARESLIBROS ejemcod, ejemcodreg, ejemfecadq, ejemtipadq, ejemdetaqu, ejempruni, ejemestu, ejemconfis, ejemdetcon, ejemres, estcod, libcod
 
     $varejemcod="ejemcod";
@@ -112,6 +112,7 @@
     $varejemdetcon="ejemdetcon";
     $varejemres="ejemres";
     $varejemestcod="estcod"; 
+
     $varejemlibcod="libcod";
     $varejemtipadq="ejemtipadq";   
 
@@ -122,5 +123,15 @@
 	  $varBitUsuCodigo="bitusucod";
 	  $varNomLibreria="bitnomlib";
 	  $varNomPersona="bitnombre";
+
+    $varejemlibcod="libcod";  
+
+   //Variables de BITACORA
+	$varFecha="bitfec";
+	$varDesc="bitdes";
+	$varBitUsuCodigo="bitusucod";
+	$varNomLibreria="bitnomlib";
+	$varNomPersona="bitnombre";
+
 
 ?>

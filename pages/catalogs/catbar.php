@@ -16,6 +16,7 @@
         <li class="nav-item">
           <a class="nav-link  text-white" href="catalogos.php?pageLocation=editoriales"> <img src="img/icons/Bookaeditorial.png" width="20" height="20" > Editoriales</a>
         </li>
+
         <li class="nav-item">
           <a class="nav-link  text-white" href="catalogos.php?pageLocation=estantes"> <img src="img/icons/Bookstand.png" width="20" height="20" > Estantes</a>
         </li>
@@ -27,7 +28,7 @@
         </li>
         <li class="nav-item">
           <a class="nav-link  text-white" href="catalogos.php?pageLocation=categorias"> <img src="img/icons/Bookstand.png" width="20" height="20" > Categorias</a>
-        </li>
+      
       </ul>
     </div>
   </nav>

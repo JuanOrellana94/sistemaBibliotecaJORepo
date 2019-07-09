@@ -51,24 +51,27 @@ function insertBook(){
 	}else if ($("#libdes").val().length<"20"){
 		$("#answerPrint").show();
 		$("#answerPrint").html("La descipcion es demasiado corta (20 Caracteres minimo)");
-	} else if ($("#autnom").val()==""){
+	} else if ($("#libnumpag").val()==""){
+		$("#answerPrint").show();
+		$("#answerPrint").html("Ingrese el numero de paginas");
+	}else if ($("#autnom").val()==""){
 		$("#answerPrint").show();
 		$("#answerPrint").html("Seleccione un Autor");
 	}else if ($("#libfecedi").val()==""){
 		$("#answerPrint").show();
 		$("#answerPrint").html("Indique la fecha de publicacion");
-	}else if ($("#libnumpag").val()==""){
-		$("#answerPrint").show();
-		$("#answerPrint").html("Ingrese el numero de paginas");
 	}else if ($("#libisbn").val()==""){
 		$("#answerPrint").show();
 		$("#answerPrint").html("Ingrese el codigo ISBN del libro");
 	}else if ($("#libisbn").val().length<"5"){
 		$("#answerPrint").show();
 		$("#answerPrint").html("Codigo ISBN Erroneo");
-	}else if ($("#dewcod").val()==""){
+	}else if ($("#dewcod").val()==""){ 
 		$("#answerPrint").show();
 		$("#answerPrint").html("Seleccione codigo DEWEY");
+	}else if ($("#libtags").val()==""){ 
+		$("#answerPrint").show();
+		$("#answerPrint").html("Seleccione almenos un criterio de busqueda");
 	}else {
 		$("#answerPrint").html('<img src="img/structures/replace.gif" style="max-width: 50%">').show(500);
 		var url = "src/libs/insertProcess/insertBook.php";
@@ -132,15 +135,15 @@ function updateBook(){
 	}else if ($("#editlibdes").val().length<"20"){
 		$("#answerEditPrint").show();
 		$("#answerEditPrint").html("La descipcion es demasiado corta (20 Caracteres minimo)");
-	} else if ($("#editgenautcod").val()==""){
+	}else if ($("#editlibnumpag").val()==""){
+		$("#answerEditPrint").show();
+		$("#answerEditPrint").html("Ingrese el numero de paginas");
+	}else if ($("#editgenautcod").val()==""){
 		$("#answerEditPrint").show();
 		$("#answerEditPrint").html("Seleccione un Autor");
 	}else if ($("#editlibfecedi").val()==""){
 		$("#answerEditPrint").show();
 		$("#answerEditPrint").html("Indique la fecha de publicacion");
-	}else if ($("#editlibnumpag").val()==""){
-		$("#answerEditPrint").show();
-		$("#answerEditPrint").html("Ingrese el numero de paginas");
 	}else if ($("#editlibisbn").val()==""){
 		$("#answerEditPrint").show();
 		$("#answerEditPrint").html("Ingrese el codigo ISBN del libro");
@@ -150,6 +153,9 @@ function updateBook(){
 	}else if ($("#editdewcod").val()==""){
 		$("#answerEditPrint").show();
 		$("#answerEditPrint").html("Seleccione codigo dewey");
+	}else if ($("#editlibtags").val()==""){ 
+		$("#answerPrint").show();
+		$("#answerPrint").html("Seleccione almenos un criterio de busqueda");
 	}else {
 		$("#answerEditPrint").html('<img src="img/structures/replace.gif" style="max-width: 50%">').show(500);
 		var url = "src/libs/insertProcess/updateBook.php";
@@ -197,6 +203,55 @@ function updateBook(){
 	}
 }
 
+function subirFotografia(){
+   $("#errorMensaje").html('<img src="img/structures/replace.gif" style="max-width: 50%">').show(500);
+   var formData = new FormData($("#formFotografia")[0]);
+
+  $.ajax({
+   url: "src/libs/insertProcess/subirPortada.php",
+   type: "POST",
+   data: formData,
+   contentType: false,
+   cache: false,
+   processData:false,
+   beforeSend : function()
+   {
+   	$("#preview").fadeOut();
+   
+   },
+   success: function(data)
+      {
+    if(data==0)
+    {
+     // invalid file format.
+     $("#errorMensaje").html("Archivo Invalido").fadeIn();
+    }
+    else if (data==1)
+    { recargarTabla();
+     // Ver imagen subida
+     $("#preview").html(data).fadeIn();
+     $("#formFotografia")[0].reset();
+     $("#accionFeedback").show();
+     $("#accionFeedback").html("<div class='alert alert-success' role='alert'> Portada actualizada </div>");
+     setTimeout(
+		function() {
+		     
+		      $("#accionFeedback").hide(500);		     
+		}, 6000);
+     $("#errorMensaje").hide(500);
+     $("#errorMensaje").fadeOut();
+	 $('#fotografiaModal').modal('hide');
+    
+    }
+      },
+    error: function(e) 
+      {
+    $("#errorMensaje").html(e).fadeIn();
+    $("#errorMensaje").hide(500);
+      }          
+    });
+}
+
 
 
 function insertEditorial(){
@@ -207,6 +262,39 @@ function insertEditorial(){
 	}else if ($("#modaleditnom").val().length<"5"){
 		$("#answerEditorialPrint").show();
 		$("#answerEditorialPrint").html("Nombre de editorial demasiado corto");
+	} else {
+		$("#answerEditorialPrint").html('<img src="img/structures/replace.gif" style="max-width: 50%">').show(500);
+		var url = "src/libs/insertProcess/insertEditorial.php";
+		$.ajax({
+			type: "POST",
+			url: url,
+			data: $("#formNewEditorial").serialize(),
+			success: function (data){								
+					$("#answerEditorialPrint").show();
+					$("#answerEditorialPrint").html(data);
+					clearEditorial();
+					reloadSelectEditoriales();
+					reloadSelectEditorialesEditar();								
+					setTimeout(
+					   	function() {
+					      $("#answerEditorialPrint").hide(500);
+					      
+					     
+					}, 6000);
+
+
+			}
+		});
+	}
+}
+
+
+
+function insertEditorial(){
+
+	if ($("#modaleditnom").val()==""){
+		$("#answerEditorialPrint").show();
+		$("#answerEditorialPrint").html("Nombre de editorial vacio");
 	} else {
 		$("#answerEditorialPrint").html('<img src="img/structures/replace.gif" style="max-width: 50%">').show(500);
 		var url = "src/libs/insertProcess/insertEditorial.php";

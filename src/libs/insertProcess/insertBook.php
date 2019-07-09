@@ -7,7 +7,7 @@
 
 	$libtit=$_POST['libtit'];
 	$libdes=$_POST['libdes'];
-	$libpor="mg/bookData/Default.png";
+	$libpor="img/portadas/Default.jpg";
 	$libfecedi=$_POST['libfecedi'];
 	$libnumpag=$_POST['libnumpag'];
 	$libisbn=$_POST['libisbn'];
@@ -15,6 +15,7 @@
 	$libgenaut=$_POST['autnom'];
 	$libDew=$_POST['dewcod'];
 	$libedit=$_POST['editcod'];
+	$libtags=$_POST['libtags'];
 
 
 	$usuCodigo=$_SESSION['usuCodigo'];
@@ -45,7 +46,8 @@ $dataRow = mysqli_fetch_array($resultado);
 			   $varlibisbn,
 			   $varlibgenaut,
 			   $varlibDew,
-			   $varlibedit
+			   $varlibedit,
+			   $varlibtags
 		      ) VALUES(
 		      '$libtit',
 		      '$libdes',
@@ -56,7 +58,8 @@ $dataRow = mysqli_fetch_array($resultado);
 		      '$libisbn',
 		      '$libgenaut',
 		      '$libDew',
-		  	  '$libedit');")
+		  	  '$libedit',
+		  	  '$libtags');")
 		    or die ('ERROR INS-INS:'.mysqli_error($conexion));
 
 	
