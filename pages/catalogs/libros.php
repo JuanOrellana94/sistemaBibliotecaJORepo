@@ -1,4 +1,4 @@
-
+  
      <?php
      
      ?>
@@ -136,7 +136,11 @@
                 <div class="input-group">
                   <textarea class="form-control" style="height: 135px" aria-label="libdes" id="libdes" name="libdes"></textarea>
                 </div>
-              </div>            
+              </div> 
+              <div class="form-group">
+                <label for="TituloLabel">Numero de paginas</label>
+                <input type="text" class="form-control" name="libnumpag" id="libnumpag"  maxlength="10" onkeypress="return isNumberKey(event);" aria-describedby="libnumpag" placeholder="">
+              </div> 
             </div>
             <div class="col-sm-6">            
               <div class="form-group">
@@ -172,10 +176,7 @@
                 <small id="emailHelp" class="form-text text-muted">Fecha de la publicacion de la edicion.</small>
               </div>
 
-              <div class="form-group">
-                <label for="TituloLabel">Numero de paginas</label>
-                <input type="text" class="form-control" name="libnumpag" id="libnumpag"  maxlength="10" onkeypress="return isNumberKey(event);" aria-describedby="libnumpag" placeholder="">
-              </div>
+          
                 <div class="form-group">
                 <label for="TituloLabel">Codigo ISBN</label>
                 <input type="text" class="form-control" name="libisbn" id="libisbn" maxlength="27" onkeypress="return isNumberSysmbolKey(event);"  aria-describedby="libisbn" placeholder="">
@@ -196,7 +197,16 @@
                   ?>
                   
                 </select>
-              </div>     
+              </div>
+               <div class="form-group">
+                <label for="TituloLabel">Criterios de Busqueda (Usa Tab entre cada criterio)</label>
+                <input  class="block-tab" name="libtags" id="libtags" maxlength="27" aria-describedby="editlibisbn" placeholder="">
+              </div>             
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+               
             </div>
           </div>
         </form>
@@ -269,7 +279,11 @@
                 <div class="input-group">
                   <textarea class="form-control" style="height: 135px" aria-label="editlibdes" id="editlibdes" name="editlibdes"></textarea>
                 </div>
-              </div>            
+              </div> 
+              <div class="form-group">
+                <label for="TituloLabel">Numero de paginas</label>
+                <input type="text" class="form-control" name="editlibnumpag" id="editlibnumpag" maxlength="10" onkeypress="return isNumberKey(event);" aria-describedby="editlibnumpag" placeholder="">
+              </div>           
             </div>
             <div class="col-sm-6">            
               <div class="form-group">
@@ -305,11 +319,8 @@
                 <small id="dateHelp" class="form-text text-muted">Fecha de la publicacion de la edicion.</small>
               </div>
 
+             
               <div class="form-group">
-                <label for="TituloLabel">Numero de paginas</label>
-                <input type="text" class="form-control" name="editlibnumpag" id="editlibnumpag" maxlength="10" onkeypress="return isNumberKey(event);" aria-describedby="editlibnumpag" placeholder="">
-              </div>
-                <div class="form-group">
                 <label for="TituloLabel">Codigo ISBN</label>
                 <input type="text" class="form-control" name="editlibisbn" id="editlibisbn" maxlength="27" onkeypress="return isNumberSysmbolKey(event);"  aria-describedby="editlibisbn" placeholder="">
               </div>
@@ -329,9 +340,14 @@
                   ?>
                   
                 </select>
+              </div>
+              <div class="form-group">
+                <label for="TituloLabel">Criterios de Busqueda (Usa Tab entre cada criterio)</label>
+                <input  class="block-tab" name="editlibtags" id="editlibtags" maxlength="27" aria-describedby="editlibtags" placeholder="">
               </div>     
             </div>
           </div>
+          
         </form>
       </div>
       <div class="modal-footer">
@@ -475,6 +491,54 @@
 </div>
 
 
+ <!--MODAL PARA AGREGAR FOTOGRAFIA FOTO IMAGEN SUBIR-->
+<div class="modal fade" id="fotografiaModal" tabindex="-1" role="dialog" aria-labelledby="fotografiaModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="background: #D5D9DF;">
+        <h5 class="modal-title" id="newEditorialModalTittle"><img src="img/icons/BookCover.png" width="30" height="30"> Agregar una portada</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="background: #D5D9DF;">
+        <form id="formFotografia" name="formFotografia ">
+          <div class="row">         
+            <div class="col-sm-12 ">
+              <div class="form-group ">
+                <div class="alert alert-success" role="alert">
+                  Subir una imagen de portada 
+                </div>
+                
+                <input type="text" class="form-control" name="modallibcodPortada" id="modallibcodPortada" aria-describedby="modallibcodPortada" placeholder="Codigo Libro" hidden="true">
+                 <input type="text" class="form-control" name="modallibtitPortada" id="modallibtitPortada" aria-describedby="modallibtitPortada" placeholder="Codigo Libro" hidden="true">
+                <div id="preview" class="d-flex justify-content-center"> <img src="img/icons/BookCover2.png" class="img-fluid"/></div>
+                <div id="errorMensaje" class="d-flex justify-content-center"></div><br>
+                     <div class="d-flex justify-content-center">
+                      <input style="width:90%" id="subirPortada"  type="file" accept="image/jpeg" name="subirPortada" />
+                    </div>                 
+              </div>
+     
+            </div>
+          </div> 
+          <div class="d-flex justify-content-center">
+            <div class="btn-group">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <button type="button" type="submit" class="btn btn-primary" onclick="subirFotografia()">Subir portada</button>
+            </div>
+          </div>     
+        </form>
+      </div>
+      <div class="modal-footer d-flex justify-content-center" style="background: #D5D9DF;">
+         
+      
+      </div>
+     
+    </div>
+  </div>
+</div>
+
+
 
 
 
@@ -488,22 +552,39 @@ window.onload = function () {
     recargarTabla();
     setSelect2();
 
+    $('.block-tab').on('keydown', function(e) { 
+      if (e.keyCode == 9) e.preventDefault(); 
+    });
+
     $(window).keydown(function(event){
-    if(event.keyCode == 13) {
-      recargarTabla();
-      event.preventDefault();
-      return false;
-      
-    }
-  });
-
+      if(event.keyCode == 13) {
+        recargarTabla();
+        event.preventDefault();
+        return false;    
+      }
+    });
  };
+//AJAX PARA SUBIR  PORTADA LIBRO
 
 
 
+ $('#newBookModal').on('show.bs.modal', function (event) {
+    $('#libtags').tagsInput({      
+      'defaultText':'Nueva',     
+      'height':'50px',
+      'width':'350px',
+      'placeholderColor' : '#003764'
+    });
+ });
+
+ $('#editBookModal').on('show.bs.modal', function (event) {
+  
+ });
 
 //Insertar datos al modal de editar
     $('#editBookModal').on('show.bs.modal', function (event) {
+
+      
       var button = $(event.relatedTarget) // Button that triggered the modal
       var varlibtit = button.data('varlibtit')
       var varlibcod = button.data('varlibcod') // Extract info from data-* attributes
@@ -514,7 +595,9 @@ window.onload = function () {
       var vardewcod = button.data('vardewcod')
       var varlibedit = button.data('varlibedit')
       var varlibisbn = button.data('varlibisbn')
+      var varlibtags = button.data('varlibtags')
 
+  
       // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
       // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
       var modal = $(this)
@@ -529,22 +612,52 @@ window.onload = function () {
       document.getElementById('editlibnumpag').value = varlibnumpag;    
       document.getElementById('editlibisbn').value = varlibisbn;
       document.getElementById('editdewcod').value = vardewcod;
+      document.getElementById('editlibtags').value = varlibtags; 
 
-       $('.js-Dropdown-Busqueda').select2({
+
+     
+
+      $('.js-Dropdown-Busqueda').select2({
         "selected": true
-     });
+      });
+
+      $('#editlibtags').tagsInput({      
+        'defaultText':'Nueva',     
+        'height':'50px',
+        'width':'350px',
+        'placeholderColor' : '#003764'
+      });
+
+       $('#editlibtags').removeTag('');
 
     
+    }) //TRIGGER EN MODAL PARA SUBIR FOTOGRAFIA IMAGEN LIBRO
+   
+     $('#fotografiaModal').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget) // Button that triggered the modal
+      var varlibtit = button.data('varlibtit')
+      var varlibcod = button.data('varlibcod')
+      var varlibpor = button.data('varlibpor') // Extract info from data-* attributes
+
+      $("#errorMensaje").html('').show(500);
+     
+      var modal = $(this)
+
+      $("#preview").html('<img src="'+varlibpor+'" style="max-width: 50%">')
+      document.getElementById('modallibcodPortada').value = varlibcod;
+      document.getElementById('modallibtitPortada').value = varlibtit;
+      
+      
     })
 
+     //TRIGGER EN MODAL PARA ELIMINAR LIBRO
      $('#deleteBookModal').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget) // Button that triggered the modal
       var varlibtit = button.data('varlibtit')
       var varlibcod = button.data('varlibcod') // Extract info from data-* attributes
 
 
-      // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-      // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+      
       var modal = $(this)
 
       $("#deleteLabel").html(varlibtit);
