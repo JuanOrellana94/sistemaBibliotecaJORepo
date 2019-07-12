@@ -53,7 +53,7 @@
    $varlibfecedi="libfecedi";
    $varlibnumpag="libnumpag";
    $varlibisbn="libisbn";
-   $varlibgenaut="autcod"; //libro genero-autor
+   $varlibgenaut="autcod";
    $varlibDew="dewcod";
    $varlibedit="editcod";
    $varlibtags="libtags";
@@ -92,7 +92,8 @@
     $vareditnom="editnom";
     $vareditpai="editpai";
 
-     // TABLA ESTANTE
+      // TABLA ESTANTE
+
     $tablaEstante="estante";
   // 7 NOMBRE TABLA ESTANTE estcod,estdes
 
@@ -102,7 +103,6 @@
      // TABLA EJEMPLARES
      $tablaEjemplares="ejemplareslibros";
 
-     
  // 8 NOMBRE TABLA EJEMPLARESLIBROS ejemcod, ejemcodreg, ejemfecadq, ejemtipadq, ejemdetaqu, ejempruni, ejemestu, ejemconfis, ejemdetcon, ejemres, estcod, libcod
 
     $varejemcod="ejemcod";
@@ -118,18 +118,12 @@
     $varejemlibcod="libcod";   
 
 
+       //Variables de BITACORA
+	  $varFecha="bitfec";
+	  $varDesc="bitdes";
+	  $varBitUsuCodigo="bitusucod";
+	  $varNomLibreria="bitnomlib";
+	  $varNomPersona="bitnombre";
 
-  
-
-
-
-
-
-   //Variables de BITACORA
-	$varFecha="bitfec";
-	$varDesc="bitdes";
-	$varBitUsuCodigo="bitusucod";
-	$varNomLibreria="bitnomlib";
-	$varNomPersona="bitnombre";
 
 ?>
