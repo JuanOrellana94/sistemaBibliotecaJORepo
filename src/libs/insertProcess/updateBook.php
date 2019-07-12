@@ -7,13 +7,14 @@
 	$libcod=$_POST['editlibcod'];
 	$libtit=$_POST['editlibtit'];
 	$libdes=$_POST['editlibdes'];
-	$libpor="img/bookData/Default.png";	
+	
 	$libfecedi=$_POST['editlibfecedi'];
 	$libnumpag=$_POST['editlibnumpag'];
 	$libisbn=$_POST['editlibisbn'];
 	$libgenaut=$_POST['editgenautcod'];
 	$libDew=$_POST['editdewcod'];
 	$libedit=$_POST['editeditcod'];
+	$libtags=$_POST['editlibtags'];
 	$current_date=date("d-m-Y h:i:s");
 
 	$usuCodigo=$_SESSION['usuCodigo'];
@@ -37,13 +38,13 @@ $dataRow = mysqli_fetch_array($resultado);
 			UPDATE $tablaLibros SET
 			$varlibtit='$libtit',
 			$varlibdes='$libdes',
-			$varlibpor='$libpor',
 			$varlibfecedi='$libfecedi',
 			$varlibnumpag='$libnumpag',
 			$varlibisbn='$libisbn',
 			$varlibgenaut='$libgenaut',
 			$varlibDew='$libDew',
-			$varlibedit='$libedit'
+			$varlibedit='$libedit',
+			$varlibtags='$libtags'
 			WHERE $varlibcod='$libcod';
 		    ")
 	    or die ('ERROR INS-INS:'.mysqli_error($conexion));

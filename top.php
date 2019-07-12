@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -22,6 +22,8 @@
     <link href="src/css/select2.min.css" rel="stylesheet"/>
     <link href="src/css/select2-bootstrap4.css" rel="stylesheet"/>
     <script src="src/js/select2.min.js"></script>
+    <link  href="src/css/jquery.tagsinput.css" rel="stylesheet"/>
+    <script src="src/js/jquery.tagsinput.js"></script>
     
 
   </head>
@@ -60,7 +62,9 @@
           <a class="dropdown-item" href="catalogos.php?pageLocation=libros">Libros</a>
           <a class="dropdown-item" href="catalogos.php?pageLocation=autores">Autores</a>
           <a class="dropdown-item" href="catalogos.php?pageLocation=editoriales">Editoriales</a>
-          <a class="dropdown-item" href="catalogos.php?pageLocation=estantes">Estantes</a>
+
+           <a class="dropdown-item" href="catalogos.php?pageLocation=estantes">Estantes</a>
+
           <div class="dropdown-divider"></div>
           <a class="dropdown-item disabled" href="#">Catalogos</a>
         </div>
@@ -103,6 +107,9 @@
           <a class="dropdown-item disabled" href="#">Herramientas</a>
         </div>
       </li>
+      <button class="btn  float-right" type="button" onclick="rediMenuOPT();" data-toggle="tooltip" data-placement="top" title="Volver al menu principal">
+                <img src="img/icons/menuRegresar.png" width="65" height="65">
+      </button>
 
     </ul> 
 

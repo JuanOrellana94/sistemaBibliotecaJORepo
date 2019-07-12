@@ -17,17 +17,16 @@
 <TITLE>SISTEMA DE BIBLIOTECA, VERSION PROTOTIPO 1.0, 2019</TITLE>
 
 <?php
+  session_start();
 
-session_start();
 
- if (isset($_SESSION["autorizado"])){
+  if (isset($_SESSION["autorizado"])){
   if($_SESSION["autorizado"]=="yes"){
     header("location: escritorio.php");
   }else{
     header("location: pages/ConfirmarClave.php");
   }
  }
-
 
  
   // }

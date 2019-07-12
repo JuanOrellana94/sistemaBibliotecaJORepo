@@ -106,7 +106,7 @@
               <div class="container">      
                 <div class="card">
                  <img class="card-img-top image" src="img/icons/menuQuery.png" alt="Repositorio">           
-                  <div class="middle">
+                  <div class="middle" onclick="rediConsulta()">
                     <div class="text">Consultas</div>
                   </div>
                 </div>

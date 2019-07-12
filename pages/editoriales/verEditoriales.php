@@ -1,9 +1,5 @@
 <!--ASPECTO VISUAL DE LA PAGINA DE EDITORIALES-->
     <!--CONTENEDOR PARA TABLA DE EDITORIALES/MODALES PARA AGREGAR Y ELIMINAR EDITORIALES--> 
-
-    <?php
-     
-     ?>
 <!--DIRECCION DE LA UBICACION ACTUAL-->     
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">

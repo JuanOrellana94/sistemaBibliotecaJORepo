@@ -117,16 +117,24 @@
 								 data-varlibisbn="<?php echo $dataLibros[$varlibisbn];?>"
 								 data-varlibgenaut="<?php echo $dataLibros[$varlibgenaut];?>"
 								 data-vardewcod="<?php echo $dataLibros[$vardewcod];?>"
-								 title="Editar Libro"
-
-								 
+								 data-varlibtags="<?php echo $dataLibros[$varlibtags];?>"
+								 title="Editar Libro"								 
 								 ><img src="img/icons/BookEditWide.png" width="35" height="30"></button>
+
+								  <button type="button" class="btn btn-light" data-toggle="modal" data-target="#fotografiaModal"
+								  data-varlibcod="<?php echo $dataLibros[$varlibcod];?>"
+								  data-varlibtit="<?php echo $dataLibros[$varlibtit];?>"
+								  data-varlibpor="<?php echo $dataLibros[$varlibpor];?>"
+								  title="Portada del Libro"		
+								  ><img src="img/icons/BookCover.png" width="35" height="30"></button>
 
 								 <button type="button" class="btn btn-light" data-toggle="modal" data-target="#deleteBookModal"
 								  data-varlibcod="<?php echo $dataLibros[$varlibcod];?>"
 								  data-varlibtit="<?php echo $dataLibros[$varlibtit];?>"
+
 								  title="Eliminar Libro"		
 								  ><img src="img/icons/BookEditWideDel.png" width="35" height="30"></button>
+								  
 								</div>
 							</td>
 						</tr>
