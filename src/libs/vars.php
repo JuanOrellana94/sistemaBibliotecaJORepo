@@ -1,21 +1,21 @@
 <?php
-	
+  
 
 
-	$servidor="localhost";
-	$usuario="bibliocnx";
-	$clave="Biblioteca123$";
-	$base="sistemaBiblioteca";
+  $servidor="localhost";
+  $usuario="bibliocnx";
+  $clave="Biblioteca123$";
+  $base="sistemabiblioteca";
 
-	
+  
   $tabla2="...";
-	$carta="612x792";
-	$a4="595x842";
-	$oficio="612x1008";
+  $carta="612x792";
+  $a4="595x842";
+  $oficio="612x1008";
 
 
-	//Nombre de tablas
-	
+  //Nombre de tablas
+  
   $tablaBitacora="bitacora";
 
   $tablaDewey="deweyclasificacion";
@@ -133,10 +133,10 @@
 
 
    //Variables de BITACORA
-	$varFecha="bitfec";
-	$varDesc="bitdes";
-	$varBitUsuCodigo="bitusucod";
-	$varNomLibreria="bitnomlib";
-	$varNomPersona="bitnombre";
+  $varFecha="bitfec";
+  $varDesc="bitdes";
+  $varBitUsuCodigo="bitusucod";
+  $varNomLibreria="bitnomlib";
+  $varNomPersona="bitnombre";
 
 ?>

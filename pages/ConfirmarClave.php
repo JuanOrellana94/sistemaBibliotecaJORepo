@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../src/css/imgbutton.css">
   <link rel="stylesheet" href="../src/css/background.css">
  
-  <script src="src/js/bootstrap.min.js"></script>
+  <script src="../src/js/bootstrap.min.js"></script>
   <script src="../src/js/jsSession.js"></script>
   <script src="../src/js/jquery-3.4.0.min.js"></script>
 
