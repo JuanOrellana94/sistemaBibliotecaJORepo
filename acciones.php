@@ -14,7 +14,7 @@
 
  if ($pageLocation=="busqueda") {
     include("pages/operaciones/buscarMenu.php");
- } else if ($pageLocation=="busqueda") {
+ } else if ($pageLocation=="none") {
  	 include("top.php");
  	# code...
  }

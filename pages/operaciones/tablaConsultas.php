@@ -64,8 +64,8 @@
 	$inicia_desde = ($pagina-1) * $limite;  
 
 	?>		
-				<div class="row">
-					<table class="table table-bordered table-hover table-responsive"  style="background-color: #FFFFFF; width: 100%">
+				
+					<table class="table table-hover table-responsive"  style="background-color: #FFFFFF; width: 100%">
 						<tbody>
 
 
@@ -91,7 +91,7 @@
 								while ($dataLibros=mysqli_fetch_assoc($selTable)){
 							?>
 							<tr>
-								<td align="center"><img src="<?php echo $dataLibros[$varlibpor];?>" width="100" height="140">  </td>
+								<td align="center" style="padding: 0px;"><img src="<?php echo $dataLibros[$varlibpor];?>" width="120" height="160">  </td>
 								<td>Titulo: <?php echo $dataLibros[$varlibtit];?> <br>
 									Autor: <?php echo $dataLibros[$varautnom]." ".$dataLibros[$varautape];?><br>
 									Editorial: <?php echo $dataLibros[$vareditnom];?> 
@@ -109,19 +109,13 @@
 									<div class="btn-group" role="group" aria-label="Opciones">
 									 <button type="button" class="btn btn-light" data-toggle="modal" data-target="#prestamosModal"
 									 data-varlibcod="<?php echo $dataLibros[$varlibcod];?>"
-									 data-varlibtit="<?php echo $dataLibros[$varlibtit];?>"							
-									 data-varlibdes="<?php echo $dataLibros[$varlibdes];?>"
-									 data-varlibedit="<?php echo $dataLibros[$varlibedit];?>"
-									 data-varlibfecedi="<?php echo $dataLibros[$varlibfecedi];?>"
-									 data-varlibnumpag="<?php echo $dataLibros[$varlibnumpag];?>"
-									 data-varlibisbn="<?php echo $dataLibros[$varlibisbn];?>"
-									 data-varlibgenaut="<?php echo $dataLibros[$varlibgenaut];?>"
-									 data-vardewcod="<?php echo $dataLibros[$vardewcod];?>"
-									 data-varlibtags="<?php echo $dataLibros[$varlibtags];?>"
+									 data-varlibtit="<?php echo $dataLibros[$varlibtit];?>"
+									 data-varlibpor="<?php echo $dataLibros[$varlibpor];?>"	
+									 data-varlibaut="<?php echo $dataLibros[$varautnom]." ".$dataLibros[$varautape];?>"							
 									 title="Prestar"
 
 									 
-									 ><img src="img/icons/BookEditWide.png" width="65" height="50"></button>
+									 ><img src="img/icons/itemPr.png" width="65" height="50"></button>
 									 
 								</td>
 							</tr>
@@ -129,7 +123,7 @@
 						}?>
 						</tbody>
 					</table>
-				</div>
+				
 			
 
 				<!--<a href="catalogos.php?pageLocation=pfL&id=<?php echo $dataLibros[$varlibcod];?>">Ver detalles</a>  -->

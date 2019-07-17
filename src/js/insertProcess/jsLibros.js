@@ -396,7 +396,8 @@ function deleteBook(){
 						}, 6000);
 
 					} else{
-						//QUERY ERROR MSSAGES
+						$("#answerDeletePrint").show();
+						$("#answerDeletePrint").html(data);
 
 					}			
 					

@@ -58,16 +58,12 @@
          <img src="img/icons/Book.png" width="65" height="65" alt="">
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          
           <a class="dropdown-item" href="catalogos.php?pageLocation=libros">Libros</a>
           <a class="dropdown-item" href="catalogos.php?pageLocation=autores">Autores</a>
           <a class="dropdown-item" href="catalogos.php?pageLocation=editoriales">Editoriales</a>
-          <a class="dropdown-item" href="catalogos.php?pageLocation=estantes">Estantes</a>
-          <a class="dropdown-item" href="catalogos.php?pageLocation=ejemplares">Ejemplares</a>
+          <a class="dropdown-item" href="catalogos.php?pageLocation=estantes">Estantes</a>        
           <a class="dropdown-item" href="catalogos.php?pageLocation=usuarios">Usuarios</a>
           <a class="dropdown-item" href="catalogos.php?pageLocation=categorias">Categorias</a>
-           
-
           <div class="dropdown-divider"></div>
           <a class="dropdown-item disabled" href="#">Catalogos</a>
         </div>

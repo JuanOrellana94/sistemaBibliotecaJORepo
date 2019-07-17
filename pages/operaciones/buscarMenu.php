@@ -60,7 +60,7 @@
                     <td align="center" width="100px" ><img class="pequeña" src="img/icons/User.png" alt=""></td>
                   </tr>
                   <tr>       
-                    <td width="100px" align="center"><button  type="button" class="btn btn-outline-light my-2 my-sm-0" id="cerrarSec"  onclick="rediLogin()">Acceder</button></td>
+                    <td width="100px" align="center"><button  type="button" class="btn btn-outline-light my-2 my-sm-0" id="Iniciar"  onclick="rediLogin()">Acceder</button></td>
                   </tr>       
                 </table>        
               </div>
@@ -130,6 +130,9 @@
             </div>
             <div class="col-sm-2">
               <div class="btn-group float-right" role="group" aria-label="Opciones"> 
+                <button type="button" class="btn btn-light " data-toggle="modal" data-target="#prestamosModalSimple">
+                          <img data-toggle="tooltip" data-placement="top" data-toggle="tooltip"  title="Bolsa de Libros" src="img/icons/itemPB.png" width="60" height="60">
+                        </button>
                 <button class="btn btn-light float-right" type="button" onclick="recargarTablaLimpiar();" data-toggle="tooltip" data-placement="top" title="Recargar Tabla">
                   <img src="img/icons/BookauthorReload.png" width="60" height="60">
                 </button>
@@ -161,31 +164,191 @@
 
 
 
-<!--MODAL PARA AGREGAR LIBROS A UN PEDIDO-->
+<!--MODAL PARA Realizar prestamos-->
 <div class="modal fade" id="prestamosModal" tabindex="-1" role="dialog" aria-labelledby="prestamosModal" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header" >
-        <h5 class="modal-title" id="prestamosModal"><img src="img/icons/Bookauthor.png" width="30" height="30"> Prestar Libros</h5>
+    <div class="modal-content" >
+      <div class="modal-header" style="background-color:#003764; color:white;" >
+        <h5 class="modal-title" id="prestamosModal"><img src="img/icons/itemPr.png" width="30" height="30"> Prestar Libro</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body" >
-        <form id="formNuevoAutor" name="formNuevoAutor">
-        
 
+        <?php if (!isset($_SESSION[ "autorizado" ])){ ?>
 
+              <div class="alert  alert-warning" role="alert">
+                 <p class="text-center"> Inicia sesion para poder realizar tus prestamos </p>
+              </div>
 
+              <div class="navbar border justify-content-center text-white"  style="margin: 5px">
+                <table>        
+                  <tr>                  
+                    <td align="center" width="100px" ><img class="pequeña" src="img/icons/User.png" alt=""></td>
+                  </tr>
+                  <tr>       
+                    <td width="100px" align="center"><button  type="button" class="btn btn-outline-primary my-2 my-sm-0" id="Iniciar"  onclick="rediLogin()">Acceder</button></td>
+                  </tr>       
+                </table>        
+              </div>
+          
+        <?php } else{ ?>
 
             
+
+            <form id="formCarritoCompras" name="formCarritoCompras"> 
+
+            <div class="row">
+              <div class="col-sm-12">
+                <table class="table  table-hover table-responsive"  style="background-color: #FFFFFF; width: 100%">
+                  <tbody>
+                    <tr>
+                      <td><div id="imagenPrestar"></div> </td>
+                      <td><label><small> <p class="text-muted"> Agregar a prestamo:  </p></small><h5><div id=notificationLabel style="color: black; font-weight: bold;"></div></h5></label></td>
+                      <td> <label for="libcantidad"><p class="text-muted"><small> Numero de Ejemplares </small> </p></label> <select class="form-control" style="width:100%; height:33px;" type="text" name="libcantidad" id="libcantidad">
+                        <?php
+                        $i=1;
+                        while ($i <= 30) {              
+                        ?>
+                        <option value="<?php echo $i;  ?>"><?php echo $i;  ?></option> 
+                        <?php
+                         $i= $i+1;
+                         }
+
+                        ?>
+                      </select> <input type="text" class="form-control" name="varlibcod" id="varlibcod" aria-describedby="varlibcod" hidden="true"> <input type="text" class="form-control" name="varlibtit" id="varlibtit" aria-describedby="varlibtit" hidden="true"><br> 
+                      <button  type="button" class="btn btn-outline-primary my-2 my-sm-0" id="Iniciar"  onclick="insertarItem()">Agregar
+                      </button> </td>
+                    </tr> 
+                  </tbody>
+                </table>                
+            </div>   
+              
+            </div>
+            <div class="row border">
+
+              <div class="col-sm-12">
+                <div id="respuestaPrestamo" style="color: red; font-weight: bold; text-align: center;"></div>
+                 <label for=""><h4>Tu lista de prestamo: </h4></label>   <div id="tablaPrestar"></div>
+
+              </div> 
+                    
+            </div>
+
+            </form>
+
+
+
+          <?php } ?>
+
+       
+
+      </div>
+      <div class="modal-footer"  style="background-color:#003764;">
+         
+
+         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button> 
+         <button type="button" class="btn btn-success" onclick="insertarAutor()">Enviar Prestamo</button>
+      </div>
+     
+    </div>
+  </div>
+</div>
+
+<!--MODAL PARA VER prestamos  SOLO-->
+<div class="modal fade" id="prestamosModalSimple" tabindex="-1" role="dialog" aria-labelledby="prestamosModalSimple" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" >
+      <div class="modal-header" style="background-color:#003764; color:white;" >
+        <h5 class="modal-title" id="prestamosModal"><img src="img/icons/itemPr.png" width="30" height="30"> Tu bolsa de prestamos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" >
+
+        <?php if (!isset($_SESSION[ "autorizado" ])){ ?>
+
+              <div class="alert  alert-warning" role="alert">
+                 <p class="text-center"> Inicia sesion para poder ver tu lista de Prestamos </p>
+              </div>
+
+              <div class="navbar border justify-content-center text-white"  style="margin: 5px">
+                <table>        
+                  <tr>                  
+                    <td align="center" width="100px" ><img class="pequeña" src="img/icons/User.png" alt=""></td>
+                  </tr>
+                  <tr>       
+                    <td width="100px" align="center"><button  type="button" class="btn btn-outline-primary my-2 my-sm-0" id="Iniciar"  onclick="rediLogin()">Acceder</button></td>
+                  </tr>       
+                </table>        
+              </div>
+          
+        <?php } else{ ?>
+
+            <form id="formCarritoCompras" name="formCarritoCompras"> 
+
+            <div class="row border">
+
+              <div class="col-sm-12">
+                <div id="respuestaPrestamo" style="color: red; font-weight: bold; text-align: center;"></div>
+                 <label for=""><h4>Tu lista de prestamo: </h4></label>   <div id="tablaPrestarSimple"></div>
+
+              </div> 
+                    
+            </div>
+
+            </form>
+
+
+
+          <?php } ?>
+
+       
+
+      </div>
+      <div class="modal-footer"  style="background-color:#003764;">
+         
+         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button> 
+         <button type="button" class="btn btn-success" onclick="activarPrestamo()">Realizar Prestamo</button>
+      </div>
+     
+    </div>
+  </div>
+</div>
+
+<!--MODAL PARA borrar item-->
+<div class="modal fade" id="borrarItemModal" tabindex="-1" role="dialog" aria-labelledby="borrarItemModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="background: #D5D9DF;">
+        <h5 class="modal-title" id="deleteEditorialTitle"><img src="img/icons/BookEditWideDel.png" width="35" height="30"> Remover</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="background: #D5D9DF;">
+        <form id="borrarItemForm" name="borrarItemForm">
+          <div class="row">         
+            <div class="col-sm-12">
+              <div class="form-group">
+                <div id=notificationLabel style="color: black; font-weight: bold; text-align: center;"><label for="TituloLabel">Remover este libro de tu lista?</label></div>                
+                <input type="text" class="form-control" name="delsolcodigo" id="delsolcodigo" aria-describedby="delsolcodigo" placeholder="" hidden="true">
+                           
+                  <div id="labelBorrar" style="color: black; font-weight: bold; text-align: center;"></div>
+                  <div id="respuestaBorrarItem" style="color: red; font-weight: bold; text-align: center;"></div>
+                  <div align="center" name="cargarTabla" id="cargarTablaBorrar"></div>
+    
+              </div>
+            </div>
+          </div>    
         </form>
       </div>
-      <div class="modal-footer" >
-         <div id="respuestaNuevoAutor" style="color: red; font-weight: bold; text-align: center;"></div>
-
-        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button> <--></-->
-        <!-- <button type="button" class="btn btn-primary" onclick="insertarAutor()">Enviar Prestamo</button> -->
+      <div class="modal-footer" style="background: #D5D9DF;">
+                
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button"  id="borrarButton" name="borrarButton" class="btn btn-warning" onclick="borrarItem()">Remover</button>
       </div>
      
     </div>
@@ -219,7 +382,9 @@
         }
       });
   };
+
 //Funcion para recargar tabla
+
 function recargarTabla(){
    //Mostrar gif de cargando a la par de la barra de busqueda
   $("#cargandoFeedback").show();
@@ -235,6 +400,60 @@ function recargarTabla(){
 }
 
 
+function cargarPrestamos(){
+   //Mostrar gif de cargando a la par de la barra de busqueda
+  $("#tablaPrestar").show();
+  $("#tablaPrestar").html(' <img src="img/structures/replace.gif" style="max-width: 60%;">').show(200);
+  $("#tablaPrestar").load("pages/operaciones/tablaPrestamos.php");
+  $("#tablaPrestarSimple").html(' <img src="img/structures/replace.gif" style="max-width: 60%;">').show(200);
+  $("#tablaPrestarSimple").load("pages/operaciones/tablaPrestamos.php");
+ 
+ 
+}
+//insertar libro a la tabla de prestamos  carrito
+function insertarItem(){
+
+  if ($("#varlibcod").val()==""){
+    $("#respuestaPrestamo").show();
+    $("#respuestaPrestamo").html("Error Codigo de Libro");
+  } else {
+    $("#respuestaPrestamo").html('<img src="img/structures/replace.gif" style="max-width: 50%">').show(500);
+    var url = "pages/operaciones/insertarItem.php";
+    $.ajax({
+      type: "POST",
+      url: url,
+      data: $("#formCarritoCompras").serialize(),
+      success: function (data){
+      if (data==0) {
+        //error programado
+        $("#respuestaPrestamo").show();
+        $("#respuestaPrestamo").html("<div class='alert alert-warning' role='alert'> <img src='img/icons/warning.png' width='60' height='60'> Este libro ya se encuentra en tu listado de prestamo </div>");
+        setTimeout(
+              function() {
+                $("#respuestaPrestamo").hide(500);     
+              }, 6000);
+      } else if (data==1) {
+
+        $("#respuestaPrestamo").show();
+        $("#respuestaPrestamo").html("<div class='alert alert-success' role='alert'> <img src='img/icons/wsuccess.png' width='60' height='60'>Añadido a tu lista de prestamo </div>");
+         //reload funcion tabla prestar()
+         cargarPrestamos();         
+          setTimeout(
+              function() {
+                $("#respuestaPrestamo").hide(500);
+                
+               
+          }, 6000);
+
+      } else {
+        $("#respuestaPrestamo").show();
+        $("#respuestaPrestamo").html(data);
+      }         
+      }
+    });
+  }
+}
+
 function recargarTablaLimpiar(){
     document.getElementById("formBusqueda").reset();
     $("#cargandoFeedback").show();
@@ -249,59 +468,111 @@ function recargarTablaLimpiar(){
       $("#cargandoFeedback").hide(500);
                            
     }, 1000);
-
-
-
-    
-
-  
+ 
 }
 
 
+function borrarItem(){
 
+  if ($("#delsolcod").val()==""){
+    $("#respuestaBorrarItem").show();
+    $("#respuestaBorrarItem").html("Codigo de Libro necesario");
+  }else {
+    $("#respuestaBorrarItem").html('<img src="img/structures/replace.gif" style="max-width: 60%">').show(500);
+    var url = "pages/operaciones/borrarItem.php";
+    $.ajax({
+      type: "POST",
+      url: url,
+      data: $("#borrarItemForm").serialize(),
+      success: function (data){
+          if (data==1) {
+            //sucess
+            $("#respuestaBorrarItem").show();
+            $("#respuestaBorrarItem").html("<div class='alert alert-success' role='alert'> Item Borrado </div>");
+            cargarPrestamos();
+            setTimeout(
+                function() {
+                  $("#respuestaBorrarItem").hide(500);
+                  $("#accionFeedback").hide(500);
+                  
+            }, 6000);
+            $('#borrarItemModal').modal('hide');
+          } else if (data==0) {
+            $("#respuestaBorrarItem").show();
+            $("#respuestaBorrarItem").html("<div class='alert alert-danger' role='alert'> Error </div>");
+            cargarPrestamos();
+            setTimeout(
+                function() {
+                  $("#respuestaBorrarItem").hide(500);
+                  
+                  
+            }, 6000);
+
+          } else{
+            $("#respuestaBorrarItem").show();
+            $("#respuestaBorrarItem").html(data);
+
+          }     
+          
+      }
+    });
+  }
+}
 
 
 
 
 //TRIGGER SE ACTIVA AL MOSTRAR UN MODAL   EDITAR 
 
- $('#modalEditarAutor').on('show.bs.modal', function (event) {
+ $('#prestamosModal').on('show.bs.modal', function (event) {
+      $("#respuestaPrestamo").hide();
       var button = $(event.relatedTarget) // Button that triggered the modal
-      var varautcod = button.data('varautcod')
-      var varautnom = button.data('varautnom')
-      var varautape = button.data('varautape')
-      var varautseud = button.data('varautseud') 
+      var varlibcod = button.data('varlibcod')
+      var varlibtit = button.data('varlibtit')
+      var varlibpor = button.data('varlibpor')
+      var varlibaut = button.data('varlibaut')
       var modal = $(this)
-      modal.find('.modal-title').text('Editar autor: ' + varautnom +' '+varautape);
-     
-      document.getElementById('editautcod').value = varautcod;
-      document.getElementById('editautnom').value = varautnom;
-      document.getElementById('editautape').value = varautape;
-      document.getElementById('editautseud').value = varautseud;
+
+      cargarPrestamos();
+
+      $("#imagenPrestar").html('<img src="'+varlibpor+'" width="70" height="100">');
+       document.getElementById('varlibcod').value = varlibcod;
+      $("#notificationLabel").html(varlibtit+' <br> - <small>'+varlibaut+'</small>');
+
+      //document.getElementById('varlibtit').value = varlibtit;
+      //document.getElementById('editautnom').value = varlibtit;
+ 
+    })
+
+ $('#prestamosModalSimple').on('show.bs.modal', function (event) {
+      $("#respuestaPrestamo").hide();
+      var button = $(event.relatedTarget) // Button that triggered the modal
+      var varlibcod = button.data('varlibcod')
+      var modal = $(this)
+
+      cargarPrestamos();
+      //document.getElementById('varlibcod').value = varlibcod;
+      //document.getElementById('varlibtit').value = varlibtit;
+      //document.getElementById('editautnom').value = varlibtit;
  
     })
 //TRIGGER SE ACTIVA AL MOSTRAR UN MODAL   ELIMINAR 
-//Eliminar autor
+//Eliminar item de lista de prestamo
   
-     $('#modalBorrarAutor').on('show.bs.modal', function (event) {
+   $('#borrarItemModal').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget) // 
-      var varautcod = button.data('varautcod')
-      var varautnom = button.data('varautnom')
-      var varautape = button.data('varautape') 
-
+      var varsolcod = button.data('varsolcod')
       $('#borrarButton').attr("disabled", false);  
 
-
       var modal = $(this)
+      
+      $("#respuestaBorrarItem").html(" ");
 
-       $("#notificationLabel").html('Esta es una accion <h5> Permanente. </h5> Desea Eliminar registro?:');
+       $("#notificationLabel").html('Remover este libro de tu lista?');
        $("#cargarTablaRequisito").html('');
 
+      document.getElementById('delsolcodigo').value = varsolcod;
 
-      $("#labelBorrar").html('<h5> '+varautnom+' '+varautape+'<h5> ');
-      document.getElementById('delautcod').value = varautcod;
-      document.getElementById('delautnom').value = varautnom;
-      document.getElementById('delautape').value = varautape;
       
       
     })

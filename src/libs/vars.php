@@ -1,20 +1,21 @@
 <?php
-	
+  
 
-	$servidor="localhost";
-	$usuario="root";
-	$clave="password";
-	$base="sistemaBiblioteca";
 
-	
+  $servidor="localhost";
+  $usuario="root";
+  $clave="";
+  $base="sistemabiblioteca";
+
+  
   $tabla2="...";
-	$carta="612x792";
-	$a4="595x842";
-	$oficio="612x1008";
+  $carta="612x792";
+  $a4="595x842";
+  $oficio="612x1008";
 
 
-	//Nombre de tablas
-	$tablaUsuarios="usuario";
+  //Nombre de tablas
+  
   $tablaBitacora="bitacora";
 
   $tablaDewey="deweyclasificacion";
@@ -25,6 +26,8 @@
 
 
     //Nombre de tabla USUARIOS
+   $tablaUsuarios="usuario";
+
    $varUsuCodigo="usucod";
    $varAccNombre="usuaccnom";
    $varContrasena="usuclave";
@@ -43,7 +46,7 @@
   //1Nombre de tabla LIBROS
 
     $tablaLibros="libros";
-     //tablaname
+     //tabl aname
    $varlibcod="libcod";
    $varlibtit="libtit";
    $varlibdes="libdes";
@@ -52,7 +55,7 @@
    $varlibfecedi="libfecedi";
    $varlibnumpag="libnumpag";
    $varlibisbn="libisbn";
-   $varlibgenaut="autcod";
+   $varlibgenaut="autcod"; //libro genero-autor
    $varlibDew="dewcod";
    $varlibedit="editcod";
    $varlibtags="libtags";
@@ -91,6 +94,7 @@
     $vareditnom="editnom";
     $vareditpai="editpai";
 
+     // TABLA ESTANTE
     $tablaEstante="estante";
   // 7 NOMBRE TABLA ESTANTE estcod,estdes
 
@@ -100,6 +104,7 @@
      // TABLA EJEMPLARES
      $tablaEjemplares="ejemplareslibros";
 
+     
  // 8 NOMBRE TABLA EJEMPLARESLIBROS ejemcod, ejemcodreg, ejemfecadq, ejemtipadq, ejemdetaqu, ejempruni, ejemestu, ejemconfis, ejemdetcon, ejemres, estcod, libcod
 
     $varejemcod="ejemcod";
@@ -112,26 +117,27 @@
     $varejemdetcon="ejemdetcon";
     $varejemres="ejemres";
     $varejemestcod="estcod"; 
-
     $varejemlibcod="libcod";
-    $varejemtipadq="ejemtipadq";   
+    $varejemtipadq="ejemtipadq";
 
 
-       //Variables de BITACORA
-	  $varFecha="bitfec";
-	  $varDesc="bitdes";
-	  $varBitUsuCodigo="bitusucod";
-	  $varNomLibreria="bitnomlib";
-	  $varNomPersona="bitnombre";
+  //solcod, usucod, libcod, solfec, libcantidad, solfecenviar CARRITO BOLSA DE LIBROS
+    $varbolsaprestamo="bolsaprestamo";
+    $varsolcod="solcod";
+    $varusucod="usucod";
+    $varlibcodcar="libcod";
+    $varsolfec="solfec";
+    $varlibcantidad="libcantidad";
+    $varsolfecenviar="solfecenviar";
 
-    $varejemlibcod="libcod";  
+
+
 
    //Variables de BITACORA
-	$varFecha="bitfec";
-	$varDesc="bitdes";
-	$varBitUsuCodigo="bitusucod";
-	$varNomLibreria="bitnomlib";
-	$varNomPersona="bitnombre";
-
+  $varFecha="bitfec";
+  $varDesc="bitdes";
+  $varBitUsuCodigo="bitusucod";
+  $varNomLibreria="bitnomlib";
+  $varNomPersona="bitnombre";
 
 ?>
